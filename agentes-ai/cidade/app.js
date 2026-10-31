@@ -58,6 +58,15 @@ for (const c of data.clientes) {
   } else if (c.tipo === 'torre') {
     box(3, h, 3, base, 0, h / 2, 0, g); box(2.2, 1.4, 2.2, acc, 0, h + .7, 0, g); box(.1, 1.2, .1, M('#ccc'), 0, h + 2, 0, g);
     windows(g, 3, h, 3, c.cor);
+  } else if (c.tipo === 'oficina') {
+    box(5, h, 3.4, base, 0, h / 2, 0, g); box(5.2, .2, 3.6, acc, 0, h + .1, 0, g);
+    box(3, 1.6, .06, M('#2b2d42'), -.6, .8, 1.72, g); for (let y = .25; y < 1.6; y += .3) box(2.9, .04, .07, M('#6c757d'), -.6, y, 1.74, g); // porta de garagem
+    const car = new THREE.Group(); car.position.set(-.9, h + .2, 0); car.rotation.y = .5; g.add(car);
+    box(1.6, .45, .8, acc, 0, .32, 0, car); box(.85, .38, .74, M('#e0fbfc'), -.1, .72, 0, car);
+    for (const [wx, wz] of [[-.5, -.4], [.5, -.4], [-.5, .4], [.5, .4]]) { const w = new THREE.Mesh(new THREE.CylinderGeometry(.17, .17, .12, 12), M('#1b1d3a')); w.rotation.x = Math.PI / 2; w.position.set(wx, .17, wz); car.add(w); }
+    const wr = new THREE.Group(); wr.position.set(1.5, h + .2, 0); wr.rotation.z = -.6; g.add(wr); const wm = M('#c0c4cc'); // chave inglesa
+    box(.2, 1.3, .12, wm, 0, .65, 0, wr); box(.6, .22, .12, wm, 0, 1.35, 0, wr); box(.16, .3, .12, wm, -.22, 1.55, 0, wr); box(.16, .3, .12, wm, .22, 1.55, 0, wr);
+    windows(g, 5, h, 3.4, c.cor);
   } else {
     box(5, h, 3.5, base, 0, h / 2, 0, g); box(5.2, .25, 3.7, acc, 0, h + .12, 0, g);
     for (let i = 0; i < 3; i++) { const t = new THREE.Mesh(new THREE.CylinderGeometry(.4, .4, 1, 12), acc); t.position.set(-1.6 + i * 1.1, .5, -2.6); t.castShadow = true; g.add(t); }
@@ -236,7 +245,7 @@ function room(p, tipo, cx, cz, w, d) {
   else { desk(p, cx, cz - .2, 0); seats.push([cx, cz + .35]); shelf(p, cx - 2, cz - d / 2 + .4, 0); sofa(p, cx + 1.8, cz + 1.4, Math.PI, '#3d405b'); plant(p, cx + 2.6, cz - 1.8, 1.3); ib(p, 1.6, .02, 1.1, '#b56576', cx, .12, cz + 1.2); }
   return { seats, walk };
 }
-const AC = { gofluxo: 'coroa', mega: 'capacete', cote: 'cruz', dimas: 'oculos', valenlub: 'gota' };
+const AC = { gofluxo: 'coroa', mega: 'capacete', cote: 'cruz', dimas: 'oculos', valenlub: 'gota', massali: 'capacete' };
 function makeAgent(d, parent, pos, helper, walk) {
   const g = new THREE.Group(); g.position.set(pos[0], .12, pos[1]); parent.add(g);
   const mat = new THREE.MeshStandardMaterial({ color: d.cor, roughness: .35, emissive: d.cor, emissiveIntensity: .15 });
@@ -265,7 +274,7 @@ function buildInterior(cid) {
     ib(f, .12, .9, 4, '#f3ead8', 0, 0, -3.5); ib(f, .12, .9, n === 4 ? 4 : .1, '#f3ead8', 0, 0, 3.5); ib(f, 4.5, .9, .12, '#f3ead8', -4.75, 0, 0); ib(f, 4.5, .9, .12, '#f3ead8', 4.75, 0, 0);
     const spots = an.salas.map((s, i) => { const r = rects[i]; const sp = room(f, s.tipo, r[0], r[1], r[2], r[3]); tags.push({ el: mkTag(s.nome), f, p: new THREE.Vector3(r[0] - r[2] / 2 + 1.1, .2, r[1] + r[3] / 2 - .35) }); return sp; });
     an.agentes.forEach(a => { const b = data.bots.find(x => x.id === a.botId); const sp = spots[a.sala]; makeAgent(b, f, sp.seats.shift() || sp.walk[0], false); });
-    an.ajudantes.forEach((h, k) => { const sp = spots[h.sala]; const d = { id: `${cid}-a${fi}-${k}`, nome: h.nome, clienteId: cid, cor: new THREE.Color(c.cor).offsetHSL(.04 * (k + 1), -.1, .12).getStyle(), papel: 'Ajudante (exemplo)', status: 'trabalhando', acao: h.acao, tarefa: h.acao.replace(/\.\.\.$/, ''), etapa: 1 + k % 2, totalEtapas: 3, timeline: [{ hora: '10:00', texto: 'Ajudante de exemplo iniciado' }] };
+    an.ajudantes.forEach((h, k) => { const sp = spots[h.sala]; const d = { id: `${cid}-a${fi}-${k}`, nome: h.nome, clienteId: cid, cor: h.cinza ? '#9aa0b8' : new THREE.Color(c.cor).offsetHSL(.04 * (k + 1), -.1, .12).getStyle(), papel: h.cinza ? 'Agente a conectar (exemplo)' : 'Ajudante (exemplo)', status: h.status || 'trabalhando', acao: h.acao, tarefa: h.acao.replace(/\.\.\.$/, ''), etapa: 1 + k % 2, totalEtapas: 3, timeline: [{ hora: '10:00', texto: h.cinza ? 'Aguardando conexão' : 'Ajudante de exemplo iniciado' }] };
       makeAgent(d, f, h.anda ? sp.walk[0] : (sp.seats.shift() || sp.walk[1]), true, h.anda ? sp.walk : null); });
     floors.push(f);
   });

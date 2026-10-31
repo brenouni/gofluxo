@@ -481,6 +481,77 @@
      ]
     }
    ]
+  },
+  {
+   "id": "massali",
+   "nome": "Massali",
+   "predio": "Oficina Massali",
+   "cor": "#e63946",
+   "pos": [
+    -5,
+    16
+   ],
+   "altura": 2.6,
+   "tipo": "oficina",
+   "andares": [
+    {
+     "nome": "Orquestração e Conhecimento",
+     "salas": [
+      {
+       "tipo": "gabinete",
+       "nome": "Sala do Orquestrador"
+      },
+      {
+       "tipo": "biblioteca",
+       "nome": "Base de conhecimento"
+      },
+      {
+       "tipo": "reuniao",
+       "nome": "Sala de reuniões"
+      },
+      {
+       "tipo": "lounge",
+       "nome": "Recepção"
+      }
+     ],
+     "agentes": [
+      {
+       "botId": "massali-orq",
+       "sala": 0
+      }
+     ],
+     "ajudantes": [
+      {
+       "nome": "Catálogo",
+       "sala": 1,
+       "acao": "Organizando catálogo de acessórios..."
+      }
+     ]
+    },
+    {
+     "nome": "Atendimento e Serviços (em breve — agente Hermes vps-massali)",
+     "salas": [
+      {
+       "tipo": "mesas",
+       "nome": "Atendimento"
+      },
+      {
+       "tipo": "codigo",
+       "nome": "VPS Massali"
+      }
+     ],
+     "agentes": [],
+     "ajudantes": [
+      {
+       "nome": "Hermes (a conectar)",
+       "sala": 1,
+       "acao": "Aguardando conexão com a vps-massali...",
+       "status": "ocioso",
+       "cinza": true
+      }
+     ]
+    }
+   ]
   }
  ],
  "bots": [
@@ -669,9 +740,40 @@
      "texto": "Rascunhou 3 respostas"
     }
    ]
+  },
+  {
+   "id": "massali-orq",
+   "nome": "Massali — Orquestrador",
+   "clienteId": "massali",
+   "papel": "Orquestrador · Massali Acessórios",
+   "cor": "#e63946",
+   "offset": [
+    0,
+    2.9
+   ],
+   "status": "trabalhando",
+   "acao": "Organizando conhecimento da Massali...",
+   "tarefa": "Montar a base de conhecimento da Massali (acessórios e serviços automotivos)",
+   "etapa": 1,
+   "totalEtapas": 3,
+   "timeline": [
+    {
+     "hora": "20:30",
+     "texto": "Grok Bot da Massali criado"
+    },
+    {
+     "hora": "20:45",
+     "texto": "Organizando conhecimento da Massali"
+    }
+   ]
   }
  ],
  "atividade": [
+  {
+   "hora": "20:45",
+   "botId": "massali-orq",
+   "texto": "Chegou à cidade: prédio da Massali inaugurado"
+  },
   {
    "hora": "11:40",
    "botId": "atlas-cote",
