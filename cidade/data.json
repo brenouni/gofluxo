@@ -1,0 +1,706 @@
+{
+ "meta": {
+  "exemplo": true,
+  "rotulo": "dados de exemplo",
+  "usuario": "Breno",
+  "versaoSchema": 1,
+  "atualizadoEm": "2026-10-31T11:45:00-03:00",
+  "notaAndares": "Andares, salas e ajudantes são dados de exemplo."
+ },
+ "clientes": [
+  {
+   "id": "gofluxo",
+   "nome": "GoFluxo",
+   "predio": "Prefeitura",
+   "cor": "#7c5cff",
+   "pos": [
+    0,
+    0
+   ],
+   "altura": 3.2,
+   "tipo": "prefeitura",
+   "andares": [
+    {
+     "nome": "Gabinete do Atlas GoFluxo",
+     "salas": [
+      {
+       "tipo": "gabinete",
+       "nome": "Gabinete"
+      },
+      {
+       "tipo": "biblioteca",
+       "nome": "Arquivo de clientes"
+      },
+      {
+       "tipo": "zen",
+       "nome": "Jardim zen"
+      },
+      {
+       "tipo": "lounge",
+       "nome": "Recepção"
+      }
+     ],
+     "agentes": [
+      {
+       "botId": "atlas-gofluxo",
+       "sala": 0
+      }
+     ],
+     "ajudantes": [
+      {
+       "nome": "Agenda",
+       "sala": 1,
+       "acao": "Organizando prioridades...",
+       "anda": true
+      }
+     ]
+    },
+    {
+     "nome": "Sala de reuniões",
+     "salas": [
+      {
+       "tipo": "reuniao",
+       "nome": "Sala de reuniões"
+      },
+      {
+       "tipo": "reuniao",
+       "nome": "Sala de call"
+      },
+      {
+       "tipo": "mesas",
+       "nome": "Apoio"
+      }
+     ],
+     "agentes": [],
+     "ajudantes": [
+      {
+       "nome": "Ata",
+       "sala": 0,
+       "acao": "Preparando pauta da semana..."
+      },
+      {
+       "nome": "Relator",
+       "sala": 2,
+       "acao": "Resumindo reunião da Mega..."
+      }
+     ]
+    },
+    {
+     "nome": "Lounge",
+     "salas": [
+      {
+       "tipo": "lounge",
+       "nome": "Lounge"
+      },
+      {
+       "tipo": "lounge",
+       "nome": "Café"
+      },
+      {
+       "tipo": "zen",
+       "nome": "Terraço"
+      }
+     ],
+     "agentes": [],
+     "ajudantes": [
+      {
+       "nome": "Barista",
+       "sala": 1,
+       "acao": "Pausa para o café ☕",
+       "anda": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mega",
+   "nome": "Mega Industrial",
+   "predio": "Fábrica Mega",
+   "cor": "#ff8a3d",
+   "pos": [
+    -9,
+    -8
+   ],
+   "altura": 2.4,
+   "tipo": "fabrica",
+   "andares": [
+    {
+     "nome": "Atendimento e Qualificação",
+     "salas": [
+      {
+       "tipo": "mesas",
+       "nome": "Triagem"
+      },
+      {
+       "tipo": "mesas",
+       "nome": "Qualificação"
+      },
+      {
+       "tipo": "reuniao",
+       "nome": "Revisão de pipes"
+      },
+      {
+       "tipo": "lounge",
+       "nome": "Copa"
+      }
+     ],
+     "agentes": [
+      {
+       "botId": "atlas-mega",
+       "sala": 0
+      }
+     ],
+     "ajudantes": [
+      {
+       "nome": "Triador",
+       "sala": 1,
+       "acao": "Testando canal de entrada..."
+      },
+      {
+       "nome": "Revisor",
+       "sala": 2,
+       "acao": "Checando campos obrigatórios...",
+       "anda": true
+      }
+     ]
+    },
+    {
+     "nome": "Planejamento",
+     "salas": [
+      {
+       "tipo": "mesas",
+       "nome": "Pipe de Planejamento"
+      },
+      {
+       "tipo": "codigo",
+       "nome": "Automações"
+      },
+      {
+       "tipo": "reuniao",
+       "nome": "Sala de vigências"
+      }
+     ],
+     "agentes": [],
+     "ajudantes": [
+      {
+       "nome": "Planejador",
+       "sala": 0,
+       "acao": "Validando fases do pipe..."
+      },
+      {
+       "nome": "Vigência",
+       "sala": 2,
+       "acao": "Configurando alertas 2m/1m/15d..."
+      }
+     ]
+    },
+    {
+     "nome": "Comercial / Diretoria",
+     "salas": [
+      {
+       "tipo": "gabinete",
+       "nome": "Diretoria"
+      },
+      {
+       "tipo": "mesas",
+       "nome": "Comercial"
+      },
+      {
+       "tipo": "lounge",
+       "nome": "Lounge"
+      }
+     ],
+     "agentes": [],
+     "ajudantes": [
+      {
+       "nome": "Comercial",
+       "sala": 1,
+       "acao": "Atualizando funil...",
+       "anda": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cote",
+   "nome": "Cote Ortopedia",
+   "predio": "Clínica Cote",
+   "cor": "#2ec4b6",
+   "pos": [
+    9,
+    -8
+   ],
+   "altura": 2.8,
+   "tipo": "clinica",
+   "andares": [
+    {
+     "nome": "Agendamento",
+     "salas": [
+      {
+       "tipo": "mesas",
+       "nome": "Pipes de agendamento"
+      },
+      {
+       "tipo": "reuniao",
+       "nome": "Auditoria"
+      },
+      {
+       "tipo": "lounge",
+       "nome": "Recepção"
+      }
+     ],
+     "agentes": [
+      {
+       "botId": "atlas-cote",
+       "sala": 1
+      }
+     ],
+     "ajudantes": [
+      {
+       "nome": "Agendador",
+       "sala": 0,
+       "acao": "Simulando agendamentos...",
+       "anda": true
+      }
+     ]
+    },
+    {
+     "nome": "Documentação",
+     "salas": [
+      {
+       "tipo": "biblioteca",
+       "nome": "Documentação"
+      },
+      {
+       "tipo": "mesas",
+       "nome": "Redação"
+      },
+      {
+       "tipo": "zen",
+       "nome": "Jardim"
+      }
+     ],
+     "agentes": [],
+     "ajudantes": [
+      {
+       "nome": "Documentador",
+       "sala": 1,
+       "acao": "Escrevendo manual dos pipes..."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dimas",
+   "nome": "Grupo Dimas",
+   "predio": "Torre Dimas",
+   "cor": "#4d96ff",
+   "pos": [
+    -9,
+    8
+   ],
+   "altura": 4.2,
+   "tipo": "torre",
+   "andares": [
+    {
+     "nome": "Financeiro",
+     "salas": [
+      {
+       "tipo": "mesas",
+       "nome": "Contas a pagar"
+      },
+      {
+       "tipo": "mesas",
+       "nome": "Contas a receber"
+      },
+      {
+       "tipo": "reuniao",
+       "nome": "Fechamento"
+      },
+      {
+       "tipo": "lounge",
+       "nome": "Copa"
+      }
+     ],
+     "agentes": [
+      {
+       "botId": "atlas-dimas",
+       "sala": 0
+      }
+     ],
+     "ajudantes": [
+      {
+       "nome": "Lançador",
+       "sala": 1,
+       "acao": "Aguardando extrato..."
+      }
+     ]
+    },
+    {
+     "nome": "Sala de IA",
+     "salas": [
+      {
+       "tipo": "codigo",
+       "nome": "Sala de código"
+      },
+      {
+       "tipo": "codigo",
+       "nome": "Servidores"
+      },
+      {
+       "tipo": "zen",
+       "nome": "Jardim zen"
+      }
+     ],
+     "agentes": [],
+     "ajudantes": [
+      {
+       "nome": "Dev",
+       "sala": 0,
+       "acao": "Ajustando integração bancária..."
+      },
+      {
+       "nome": "Monitor",
+       "sala": 1,
+       "acao": "Monitorando logs...",
+       "anda": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "valenlub",
+   "nome": "ValenLub",
+   "predio": "Central ValenLub",
+   "cor": "#ffd23f",
+   "pos": [
+    9,
+    8
+   ],
+   "altura": 2.2,
+   "tipo": "galpao",
+   "andares": [
+    {
+     "nome": "Financeiro",
+     "salas": [
+      {
+       "tipo": "mesas",
+       "nome": "Conciliação caixa 4"
+      },
+      {
+       "tipo": "mesas",
+       "nome": "Cobrança 08h"
+      },
+      {
+       "tipo": "reuniao",
+       "nome": "Fechamento"
+      },
+      {
+       "tipo": "lounge",
+       "nome": "Copa"
+      }
+     ],
+     "agentes": [
+      {
+       "botId": "atlas-valenlub",
+       "sala": 0
+      }
+     ],
+     "ajudantes": [
+      {
+       "nome": "Cobrador",
+       "sala": 1,
+       "acao": "Cobrança das 08h enviada ✓"
+      }
+     ]
+    },
+    {
+     "nome": "Inbox",
+     "salas": [
+      {
+       "tipo": "mesas",
+       "nome": "Caixa de entrada"
+      },
+      {
+       "tipo": "reuniao",
+       "nome": "Fornecedores"
+      },
+      {
+       "tipo": "lounge",
+       "nome": "Lounge"
+      }
+     ],
+     "agentes": [
+      {
+       "botId": "valen-inbox",
+       "sala": 0
+      }
+     ],
+     "ajudantes": [
+      {
+       "nome": "Classificador",
+       "sala": 1,
+       "acao": "Classificando e-mails...",
+       "anda": true
+      }
+     ]
+    },
+    {
+     "nome": "Segundo Cérebro",
+     "salas": [
+      {
+       "tipo": "biblioteca",
+       "nome": "Segundo cérebro"
+      },
+      {
+       "tipo": "zen",
+       "nome": "Jardim zen"
+      },
+      {
+       "tipo": "codigo",
+       "nome": "Indexação"
+      }
+     ],
+     "agentes": [],
+     "ajudantes": [
+      {
+       "nome": "Bibliotecário",
+       "sala": 0,
+       "acao": "Indexando notas do dia...",
+       "anda": true
+      },
+      {
+       "nome": "Indexador",
+       "sala": 2,
+       "acao": "Gerando resumos..."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "bots": [
+  {
+   "id": "atlas-gofluxo",
+   "nome": "Atlas GoFluxo",
+   "clienteId": "gofluxo",
+   "papel": "Orquestrador",
+   "cor": "#a78bfa",
+   "offset": [
+    0,
+    2.9
+   ],
+   "status": "trabalhando",
+   "acao": "Distribuindo tarefas da semana...",
+   "tarefa": "Consolidar pendências de todos os clientes",
+   "etapa": 2,
+   "totalEtapas": 4,
+   "timeline": [
+    {
+     "hora": "08:00",
+     "texto": "Leu os relatórios dos Atlas"
+    },
+    {
+     "hora": "09:10",
+     "texto": "Priorizou entregas de segunda"
+    },
+    {
+     "hora": "11:30",
+     "texto": "Consolidando pendências"
+    }
+   ]
+  },
+  {
+   "id": "atlas-mega",
+   "nome": "Atlas Mega",
+   "clienteId": "mega",
+   "papel": "Pipefy · validação de pipes",
+   "cor": "#ff8a3d",
+   "offset": [
+    1.8,
+    2.9
+   ],
+   "status": "precisa",
+   "acao": "Validando pipe de Planejamento...",
+   "tarefa": "Validar pipes no Pipefy para produção",
+   "etapa": 3,
+   "totalEtapas": 5,
+   "pergunta": {
+    "texto": "Trocar \"Outro\" por \"Indicação\" no Canal de entrada?",
+    "opcoes": [
+     "Sim, trocar",
+     "Manter"
+    ]
+   },
+   "timeline": [
+    {
+     "hora": "09:00",
+     "texto": "Revisou pipe de Triagem"
+    },
+    {
+     "hora": "10:15",
+     "texto": "Testou automações do pipe de Planejamento"
+    },
+    {
+     "hora": "11:20",
+     "texto": "Aguardando decisão do Breno"
+    }
+   ]
+  },
+  {
+   "id": "atlas-cote",
+   "nome": "Atlas - Cote",
+   "clienteId": "cote",
+   "papel": "Documentação e auditoria",
+   "cor": "#2ec4b6",
+   "offset": [
+    -1.8,
+    2.9
+   ],
+   "status": "trabalhando",
+   "acao": "Auditando pipe de agendamento...",
+   "tarefa": "Documentar e auditar pipes de agendamento",
+   "etapa": 2,
+   "totalEtapas": 3,
+   "timeline": [
+    {
+     "hora": "08:40",
+     "texto": "Mapeou campos do agendamento"
+    },
+    {
+     "hora": "10:05",
+     "texto": "Gerou documentação v1"
+    },
+    {
+     "hora": "11:40",
+     "texto": "Auditando regras de SLA"
+    }
+   ]
+  },
+  {
+   "id": "atlas-dimas",
+   "nome": "Atlas Dimas",
+   "clienteId": "dimas",
+   "papel": "Automação financeira",
+   "cor": "#4d96ff",
+   "offset": [
+    1.8,
+    2.9
+   ],
+   "status": "erro",
+   "acao": "Falha ao ler extrato do banco",
+   "tarefa": "Automatizar lançamentos de contas a pagar",
+   "etapa": 1,
+   "totalEtapas": 4,
+   "timeline": [
+    {
+     "hora": "07:30",
+     "texto": "Iniciou importação de boletos"
+    },
+    {
+     "hora": "07:52",
+     "texto": "Erro: credencial do banco expirada"
+    }
+   ]
+  },
+  {
+   "id": "atlas-valenlub",
+   "nome": "Atlas - ValenLub",
+   "clienteId": "valenlub",
+   "papel": "Conciliação do caixa 4",
+   "cor": "#ffd23f",
+   "offset": [
+    -1.8,
+    2.9
+   ],
+   "status": "trabalhando",
+   "acao": "Conciliando caixa 4...",
+   "tarefa": "Conciliação bancária do caixa 4",
+   "etapa": 4,
+   "totalEtapas": 6,
+   "timeline": [
+    {
+     "hora": "08:00",
+     "texto": "Enviou cobrança das 08h"
+    },
+    {
+     "hora": "09:30",
+     "texto": "Importou extratos"
+    },
+    {
+     "hora": "11:00",
+     "texto": "Atualizou o segundo cérebro"
+    }
+   ]
+  },
+  {
+   "id": "valen-inbox",
+   "nome": "Valen Inbox XPert",
+   "clienteId": "valenlub",
+   "papel": "Gestão de e-mails",
+   "cor": "#ff6fb5",
+   "offset": [
+    3.3,
+    0.4
+   ],
+   "status": "precisa",
+   "acao": "Triando caixa de entrada...",
+   "tarefa": "Organizar e responder e-mails do financeiro",
+   "etapa": 2,
+   "totalEtapas": 3,
+   "pergunta": {
+    "texto": "Responder o fornecedor com o boleto atualizado?",
+    "opcoes": [
+     "Responder",
+     "Deixar comigo"
+    ]
+   },
+   "timeline": [
+    {
+     "hora": "08:15",
+     "texto": "Classificou 42 e-mails"
+    },
+    {
+     "hora": "10:50",
+     "texto": "Rascunhou 3 respostas"
+    }
+   ]
+  }
+ ],
+ "atividade": [
+  {
+   "hora": "11:40",
+   "botId": "atlas-cote",
+   "texto": "Iniciou auditoria das regras de SLA"
+  },
+  {
+   "hora": "11:20",
+   "botId": "atlas-mega",
+   "texto": "Pediu sua decisão sobre o Canal de entrada"
+  },
+  {
+   "hora": "11:00",
+   "botId": "atlas-valenlub",
+   "texto": "Atualizou o segundo cérebro"
+  },
+  {
+   "hora": "10:50",
+   "botId": "valen-inbox",
+   "texto": "Rascunhou 3 respostas"
+  },
+  {
+   "hora": "08:00",
+   "botId": "atlas-valenlub",
+   "texto": "Enviou a cobrança das 08h"
+  },
+  {
+   "hora": "07:52",
+   "botId": "atlas-dimas",
+   "texto": "Erro: credencial do banco expirada"
+  }
+ ]
+}
