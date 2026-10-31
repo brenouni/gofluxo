@@ -1,0 +1,239 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mapa resumido</title></head><body><div style="position:relative;z-index:99999;background:#153e35;color:white;padding:12px 20px;font:14px system-ui"><a style="color:white" href="./">← Voltar ao projeto</a> · Mapa · Documento de referência; consultar a data e os limites da versão.</div><div id="mega-minimal-map">
+  <style>
+    #mega-minimal-map {
+      color: var(--foreground);
+      font-family: inherit;
+    }
+
+    #mega-minimal-map .map-head {
+      margin-bottom: 18px;
+    }
+
+    #mega-minimal-map .map-head p {
+      margin: 4px 0 0;
+      color: var(--muted-foreground);
+    }
+
+    #mega-minimal-map .map-grid {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) 46px minmax(280px, 1.15fr) 46px minmax(240px, .9fr);
+      align-items: center;
+      gap: 10px;
+    }
+
+    #mega-minimal-map .column-label {
+      margin: 0 0 10px;
+      color: var(--muted-foreground);
+      font-weight: 500;
+    }
+
+    #mega-minimal-map .source-list,
+    #mega-minimal-map .field-list,
+    #mega-minimal-map .gate-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    #mega-minimal-map .source {
+      display: grid;
+      grid-template-columns: minmax(115px, .8fr) minmax(130px, 1.2fr);
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: color-mix(in srgb, var(--viz-series-1) 10%, transparent);
+      border-left: 3px solid var(--viz-series-1);
+    }
+
+    #mega-minimal-map .source strong,
+    #mega-minimal-map .field-group strong,
+    #mega-minimal-map .gate strong {
+      font-weight: 500;
+    }
+
+    #mega-minimal-map .source span,
+    #mega-minimal-map .field-group span,
+    #mega-minimal-map .gate span {
+      color: var(--muted-foreground);
+    }
+
+    #mega-minimal-map .arrow {
+      display: grid;
+      place-items: center;
+      color: var(--muted-foreground);
+    }
+
+    #mega-minimal-map .arrow i {
+      width: 28px;
+      height: 28px;
+    }
+
+    #mega-minimal-map .hub {
+      padding: 18px;
+      background: color-mix(in srgb, var(--viz-series-2) 8%, transparent);
+      border-top: 4px solid var(--viz-series-2);
+    }
+
+    #mega-minimal-map .hub-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    #mega-minimal-map .hub-title i {
+      color: var(--viz-series-2);
+    }
+
+    #mega-minimal-map .hub-title p {
+      margin: 2px 0 0;
+      color: var(--muted-foreground);
+    }
+
+    #mega-minimal-map .field-group {
+      display: grid;
+      gap: 3px;
+      padding: 10px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    #mega-minimal-map .field-group:first-child {
+      border-top: 0;
+    }
+
+    #mega-minimal-map .gate {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 8px;
+      align-items: start;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    #mega-minimal-map .gate:last-child {
+      border-bottom: 0;
+    }
+
+    #mega-minimal-map .gate i {
+      color: var(--viz-series-3);
+    }
+
+    #mega-minimal-map .outcome {
+      margin-top: 14px;
+      padding: 14px;
+      color: var(--primary-foreground);
+      background: var(--primary);
+    }
+
+    #mega-minimal-map .outcome strong {
+      display: block;
+      font-weight: 500;
+    }
+
+    #mega-minimal-map .outcome span {
+      color: var(--primary-foreground);
+      opacity: .82;
+    }
+
+    #mega-minimal-map .rule {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted-foreground);
+    }
+
+    #mega-minimal-map .rule i {
+      color: var(--viz-series-4);
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 760px) {
+      #mega-minimal-map .map-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #mega-minimal-map .arrow {
+        transform: rotate(90deg);
+        min-height: 28px;
+      }
+    }
+  </style>
+
+  <header class="map-head">
+    <h2>Atendimento Comercial — visão simples</h2>
+    <p>Os databases alimentam o card; os campos qualificam a oportunidade; três validações liberam o Planejamento.</p>
+  </header>
+
+  <div class="map-grid" role="img" aria-label="Mapa da primeira fase do atendimento comercial da Mega, relacionando databases, campos do card e critérios de saída para Planejamento.">
+    <section aria-labelledby="sources-title">
+      <h3 class="column-label" id="sources-title">1 · Dados vindos dos databases</h3>
+      <div class="source-list">
+        <div class="source"><strong>Órgãos</strong><span>Órgão ou secretaria</span></div>
+        <div class="source"><strong>Contratos</strong><span>Contrato · vigência · saldo</span></div>
+        <div class="source"><strong>Solicitantes</strong><span>Solicitante · contato</span></div>
+        <div class="source"><strong>Unidades</strong><span>Unidade · município/UF</span></div>
+        <div class="source"><strong>Pessoas internas</strong><span>Responsável comercial</span></div>
+      </div>
+    </section>
+
+    <div class="arrow" aria-hidden="true"><i data-lucide="arrow-right"></i></div>
+
+    <section class="hub" aria-labelledby="hub-title">
+      <div class="hub-title">
+        <i data-lucide="inbox" aria-hidden="true"></i>
+        <div>
+          <h3 id="hub-title">2 · Card de Atendimento</h3>
+          <p>Uma unidade por demanda ou ciclo</p>
+        </div>
+      </div>
+      <div class="field-list">
+        <div class="field-group">
+          <strong>Entrada</strong>
+          <span>Origem · canal · evidência · descrição da demanda</span>
+        </div>
+        <div class="field-group">
+          <strong>Priorização</strong>
+          <span>Prioridade · ciclo · prazo · situação física · estimativa</span>
+        </div>
+        <div class="field-group">
+          <strong>Acompanhamento</strong>
+          <span>Próxima ação · prazo da ação · resultado da qualificação</span>
+        </div>
+        <div class="field-group">
+          <strong>Controle automático</strong>
+          <span>ID · data de entrada · fase/status</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="arrow" aria-hidden="true"><i data-lucide="arrow-right"></i></div>
+
+    <section aria-labelledby="gate-title">
+      <h3 class="column-label" id="gate-title">3 · Trava para avançar</h3>
+      <div class="gate-list">
+        <div class="gate">
+          <i data-lucide="circle-check" aria-hidden="true"></i>
+          <div><strong>Demanda qualificada</strong><br><span>escopo inicial compreendido</span></div>
+        </div>
+        <div class="gate">
+          <i data-lucide="circle-check" aria-hidden="true"></i>
+          <div><strong>Contrato compatível</strong><br><span>objeto, vigência e saldo conferidos</span></div>
+        </div>
+        <div class="gate">
+          <i data-lucide="circle-check" aria-hidden="true"></i>
+          <div><strong>Unidade selecionada</strong><br><span>oportunidade escolhida para o ciclo</span></div>
+        </div>
+      </div>
+      <div class="outcome">
+        <strong>Pronta para Planejamento</strong>
+        <span>Agora o projeto pode ser criado.</span>
+      </div>
+    </section>
+  </div>
+
+  <div class="rule">
+    <i data-lucide="shield-alert" aria-hidden="true"></i>
+    <span>OS e empenho não pertencem a esta fase; são travas posteriores para liberar a execução.</span>
+  </div>
+</div>
+</body></html>

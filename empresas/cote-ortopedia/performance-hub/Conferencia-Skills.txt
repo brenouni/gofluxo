@@ -1,0 +1,39 @@
+CONFERÊNCIA DAS SKILLS DO PERFORMANCE HUB — 20/10/2026
+
+AMBIENTE
+Hermes na AGENTE-COTE, usuário breno, endereço Tailscale 100.102.0.23. A VPS de produção do Hub é outra máquina. A criação de skills não alterou o aplicativo nem os dados de produção.
+
+ANTES
+O catálogo real do Hermes reconhecia claude-design e production-dashboard-auditing. A skill de auditoria contém referências de retomada e regras técnicas do Performance Hub. Há memória operacional geral da COTE. Não foi encontrada uma skill específica do Hub para manter o design aprovado nem uma rotina própria de aprendizado e acompanhamento diário. Portanto, havia conhecimento útil, mas a organização ainda era incompleta para a operação pretendida.
+
+CORREÇÃO EXECUTADA
+Instalação pelo gerenciador nativo skill_manage, sem contornar sua validação ou eventual controle de aprovação. Nenhuma skill genérica foi removida ou substituída.
+
+1. performance-hub-design
+Local: /home/breno/.hermes/skills/creative/performance-hub-design/SKILL.md
+Orienta o menu único por tarefas, uso principal no computador, retorno com contexto, diferenças entre rotina/formulário/avaliação e preservação de permissões. Inclui contexto de versão e distingue candidata de produção.
+
+2. performance-hub-aprendizado
+Local: /home/breno/.hermes/skills/software-development/performance-hub-aprendizado/SKILL.md
+Define leitura diária, contratos de métricas, granularidade, qualidade da fonte, preservação de histórico e registro de aprendizado validável. Inclui duas referências e um script de validação/agregação de snapshot normalizado. Não coleta nem exporta dados reais.
+
+VALIDAÇÃO
+- Frontmatter validado pelo código da instalação do Hermes. Corrigido o limite real de descrição de novas skills: 60 caracteres.
+- Metadados e seção exigida pelo lint ajustados. As referências existem.
+- As duas skills aparecem no catálogo do runtime após nova leitura e foram abertas com sucesso pelo skill_view nativo, sem comandos ou variáveis obrigatórias ausentes.
+- O script passou em oito verificações locais sintéticas: taxa ponderada, base vazia, fonte indisponível, fonte parcial, duplicata, data impossível, coleta sem fuso e status inválido.
+- Smoke na VPS confirmou cálculo e preservação do estado de indisponibilidade.
+- Nenhuma consulta a dados de colaboradores foi necessária para esses testes.
+- Os avisos de toolsets homeassistant/teams/google_chat encontrados no catálogo são preexistentes e não dizem respeito às duas skills. Não foram alterados neste trabalho.
+
+USO
+Na próxima solicitação ao Hermes, pode-se pedir explicitamente: "Use performance-hub-design para revisar a interface" ou "Use performance-hub-aprendizado para conferir as métricas deste snapshot". Uma sessão já aberta pode ter índice inicial em cache; o teste confirma a descoberta pelo leitor atual, não que uma conversa anterior já tenha carregado o conteúdo.
+
+O QUE AINDA NÃO ESTÁ ATIVO
+Não foi implementado conector de métricas em produção, conta técnica, coleta diária, agenda, banco histórico, dashboard publicado ou envio de relatórios. O script trabalha com um contrato normalizado a ser alimentado por integração futura. Skills são instruções reutilizáveis; sua instalação não prova monitoramento operacional ponta a ponta.
+
+MODELO ENTREGUE
+Dashboard-Acompanhamento.html, na pasta performance-hub-ux deste chat. Usa somente exemplos fictícios e estados simulados: Hoje, Evolução, Colaboradores, Aprendizados, Agente e fontes. Permite selecionar setor e comparar fonte completa, parcial e indisponível. Os totais de exemplo são calculados do fixture de setores; valores individuais não são derivados dos totais de um setor.
+
+PRÓXIMO MARCO
+Conectar uma fonte autorizada de leitura, fechar o catálogo de indicadores e expectativas históricas, definir retenção e acesso, testar uma coleta manual completa e só então decidir agenda e fechamento diário. Sem inferir falta, atraso ou produtividade de uma ausência de registro. Dados individuais permanecem no sistema com acesso autorizado; memória e aprendizado guardam processo e evidência mínima.

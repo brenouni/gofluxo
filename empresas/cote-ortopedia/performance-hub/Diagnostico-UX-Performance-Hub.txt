@@ -1,0 +1,253 @@
+PERFORMANCE HUB — ESTUDO DE UX E UI
+20 de outubro de 2026 | Proposta para discussão, sem publicação
+
+DECISÃO RECOMENDADA
+Um único ambiente organizado por tarefas. Direção e Supervisão tornam-se visões da página inicial; não são dois aplicativos em que o gerente precisa procurar as funções. Navegação lateral persistente no computador, com os mesmos destinos e nomes nas áreas compartilhadas. As permissões atuais continuam valendo: o menu não concede acesso nem amplia setores.
+
+Preferências confirmadas pelo usuário nesta sessão: menu único por tarefas e uso principalmente no computador. Rotinas continuam compartilhadas por cargo e setor. Formulários são modelos de avaliação. Não foram alterados código, banco nem release de produção neste estudo.
+
+1. COMO O ESTUDO FOI FEITO
+
+Inspeção do código da candidata local, navegação autenticada de leitura na produção e análise de tarefas. Percurso publicado observado: Direção → alerta de rotinas em aberto → Supervisão → Rotinas observadas. Inspeção de navegação, títulos, estados, vínculos e retornos das telas de equipe, acompanhamento individual, avaliação, revisão e gestão.
+
+A produção e a candidata foram analisadas separadamente. O novo menu horizontal e a gestão de rotinas/formulários existem na candidata, ainda não publicada. Alguns problemas da produção já têm correções locais de dados ou segurança. Não se atribuiu à produção o que só existe na candidata, nem se tratou uma correção local como publicação.
+
+A análise usa as heurísticas de Nielsen, orientações W3C e o guia de avaliação da skill huashu-design. É uma avaliação especializada: não houve entrevistas, observação de funcionários trabalhando, métricas de uso, teste SUS ou auditoria integral de conformidade WCAG. As consequências sobre esforço e erros são hipóteses fundamentadas para testar; não são resultados de pesquisa com usuários.
+
+Prioridades qualitativas:
+ALTA — desorienta o usuário, perde o contexto de uma tarefa ou pode induzir ação no contexto errado.
+MÉDIA — dificulta descoberta, leitura, comparação ou aprendizado.
+BAIXA — refinamento visual depois de resolver o caminho principal.
+Não foram inventadas notas de usabilidade, probabilidades ou ganhos percentuais.
+
+2. PRINCIPAIS ACHADOS, COM EVIDÊNCIA E CORREÇÃO
+
+F01 — ALTA | Dois lugares para procurar o mesmo trabalho
+Evidência: Direção e Supervisão têm resumo, dados da equipe, avaliações e uma visão individual. Para gerente, a página Supervisão renderiza Manager360, também usado na Direção. A candidata adiciona o mesmo EvaluationManager em ambas e em Gestão. O menu horizontal repete Supervisão, já disponível no seletor superior.
+Efeito provável: o administrador precisa lembrar qual entrada tem a ação certa e qual é apenas consulta.
+Correção: uma navegação por tarefas; uma fonte por área de trabalho. Início oferece resumos diferentes, mas sempre leva à mesma Equipe, Rotinas, Avaliações e Ponto.
+Aceite: uma tarefa não tem duas implementações concorrentes para o mesmo perfil.
+
+F02 — ALTA | Alertas diferentes desembocam na mesma página genérica
+Evidência: na Direção, os alertas de rotinas em aberto, pessoas sem entrada e cadastro sem setor apontam para /hub/supervisor. O percurso de rotinas foi conferido na produção: o destino é o início da Supervisão, sem filtro de rotinas.
+Efeito provável: o alerta promete uma lista, mas o usuário precisa reencontrar o problema dentro de outra página longa.
+Correção: cada alerta abre seu destino específico, com setor, período e filtro visíveis. Cadastro sem setor → Equipe com esse filtro; rotina pendente → Rotinas com pendentes; sem entrada → Ponto e pausas com sem registro.
+Aceite: um clique no alerta abre a lista correspondente; remover o filtro é explícito.
+
+F03 — ALTA | Localização visual desaparece em certas rotas
+Evidência publicada: em /hub/supervisao/rotinas, os dois botões Direção e Supervisão aparecem desmarcados. No código, o seletor reconhece /hub/supervisor, mas não /hub/supervisao. Avaliações e perfil também não pertencem aos dois prefixos.
+Na candidata, o menu principal marca somente correspondência exata de endereço; páginas filhas podem ficar sem seção selecionada.
+Correção: usar um mapa explícito de navegação para a seção ativa, independente do nome técnico da rota. Na proposta, revisão permanece em Avaliações e acompanhamento individual permanece em Equipe.
+Aceite: toda página de trabalho tem uma seção principal ativa e título que identifica a tarefa.
+
+F04 — ALTA | “Voltar” existe parcialmente, mas não é previsível
+Evidência: avaliação/revisão usam router.back(); o perfil individual e as rotinas mensais usam links fixos para Supervisão. Equipe e o painel novo de gestão não oferecem um padrão equivalente. Um retorno fixo pode trocar a visão de origem; router.back() sozinho depende do histórico do navegador.
+Correção: retorno com nome do destino (“Voltar para avaliações”, “Voltar para a equipe”), restituindo filtro, pessoa e período. Em acesso direto, usar destino interno seguro. A marca oferece caminho para o início. Não colocar botão sem destino em uma raiz.
+Aceite: entrar por URL direta, pelo início e pela equipe oferece um retorno útil, interno e autorizado. Retornar não descarta rascunhos silenciosamente.
+
+F05 — ALTA | Fim da tarefa manda o usuário para outro contexto
+Evidência: a revisão conclui em /hub/supervisor?reviewed=1, mesmo que o gerente tenha vindo da Direção ou de outra área; a autoavaliação volta para /hub após salvar ou enviar. Não há contrato comum de origem/restauração.
+Correção: diferenciar “Salvar rascunho” (permanecer), “Enviar” (confirmar próximo passo) e “Concluir revisão” (retornar à lista de origem, com confirmação e estado atualizado).
+Aceite: finalizar não muda de visão sem explicação e o item concluído deixa a fila quando apropriado.
+
+F06 — ALTA | Mistura entre ler, configurar e executar
+Evidência: a Direção inclui uma visão individual extensa antes da matriz de setores, além de atribuição de avaliação e abertura de ciclo. A Supervisão acumula fila, acompanhamento, avaliações e rotinas mensais.
+Correção: Início resume e encaminha; Equipe acompanha pessoas; Rotinas gere e consulta tarefas; Avaliações gere o fluxo; Ponto consulta jornada. Configurações de ciclo ficam dentro de Avaliações, para quem pode administrá-las.
+Aceite: o resumo não precisa carregar todos os formulários e históricos da aplicação.
+
+F07 — MÉDIA | Nomes conceituais e títulos poéticos dificultam orientação
+Evidência: “Uma pessoa, todos os fatos observados”, “Leitura factual”, “Cockpit operacional”, “Apontar nova avaliação” e “Registros observados” coexistem com nomes técnicos. O próprio usuário perguntou se formulário era rotina ou avaliação.
+Correção: títulos “Visão geral”, “Acompanhamento da equipe”, “Avaliações”, “Atribuir avaliação”, “Execuções de rotinas”. Explicar termos uma vez, na área correta. “Formulário: modelo com critérios”; “Avaliação: aplicação do modelo a uma pessoa”; “Rotina: tarefa recorrente”.
+Aceite: uma pessoa entende o destino sem depender de treinamento ou conhecer o modelo de dados.
+
+F08 — MÉDIA | Cargo, setor, frequência e formulários aparecem como códigos
+Evidência: listas de acompanhamento exibem auxiliar_administrativo, autorizacoes_faturamento e Diaria. Avaliações usam siglas como ADRD ou ADF; a candidata melhora o nome na seleção, mas nem todas as listas reaproveitam essa apresentação.
+Correção: catálogo único de nomes legíveis; nome do formulário em primeiro plano e código como referência secundária. Manter o identificador estável nos dados, sem exibi-lo como título de negócio.
+Aceite: interfaces novas e antigas usam os mesmos nomes; siglas não são a única informação de uma opção.
+
+F09 — MÉDIA | Escopo da tela não coincide sempre com a promessa do controle
+Evidência: o seletor descreve Supervisão como “visão do seu setor”; o administrador gerente vê todos os setores. Há diferentes expressões “escopo global”, “visão consolidada” e “seu escopo persistido”.
+Correção: mostrar “Todos os setores autorizados” ou o setor selecionado em posição constante. O seletor de visão descreve intenção (resumo ou acompanhamento), não uma mudança de permissão.
+Aceite: filtrar nunca aumenta acesso; voltar mantém o setor; papel, visão e filtro não são apresentados como a mesma coisa.
+
+F10 — MÉDIA | Hoje, mês e ciclo podem parecer o mesmo período
+Evidência: Direção resume hoje; Supervisão mistura operação de hoje, ciclo de setembro fora da vigência e indicadores mensais. A interface pode mostrar “cadastro ativo / período encerrado” junto de “pronta para revisão”.
+Correção: identificar o período por seção. Rotinas/Jornada podem usar Hoje ou Mês; Avaliações usa Ciclo. Não fingir que um seletor global altera dados que não obedecem a ele. Explicar separadamente abertura para novas atribuições e disponibilidade de revisão, conforme regra de negócio atual.
+Aceite: cada lista e indicador informa referência temporal; ciclo administrativo ativo não é rotulado simplesmente como mês corrente.
+
+F11 — MÉDIA | Página longa com resumos repetidos compete com a próxima ação
+Evidência: Direção mostra percentuais de ponto e rotinas no cartão principal e novamente em outra faixa de métricas, depois carrega acompanhamento individual, atribuições e setores. A Supervisão repete itens de revisão na fila e no fluxo.
+Correção: indicadores resumidos com destino claro; fila com ação direta; detalhes carregados na área correspondente. Repetição só quando há função diferente e identificada.
+Aceite: no computador, o usuário identifica a tarefa principal antes de percorrer grandes blocos de detalhes.
+
+F12 — MÉDIA | Falta uma visão única da pessoa através das tarefas
+Evidência: há acompanhamento individual embutido no Manager360, perfil individual sob Supervisão e diferentes listas de avaliações. Estado de busca e seleção fica em useState e não forma um destino consistente.
+Correção: Equipe → pessoa → abas/resumos de rotinas, avaliações e jornada. Atalhos preservam a pessoa e retornam ao acompanhamento. URLs internas podem refletir estado relevante, com autorização no servidor.
+Aceite: abrir avaliação pela pessoa e voltar restaura a pessoa; atualizar a página não seleciona silenciosamente outra pessoa.
+
+F13 — MÉDIA | Menu horizontal da candidata melhora descoberta, mas não fecha a arquitetura
+Evidência: o menu novo inclui “Criar rotinas e avaliações”, “Rotinas do mês”, “Equipe”, “Executivo” e “Supervisão” no mesmo nível. A candidata usa overflow horizontal para a navegação.
+Correção: nomes de áreas estáveis (“Rotinas”, “Avaliações”), ações dentro das áreas. Menu lateral aberto no computador. No celular, destinos visíveis em menu claro; não depender de perceber uma faixa cortada.
+Aceite: Criar é uma ação; Rotinas é uma área. Administração e operação não geram destinos duplicados.
+
+F14 — MÉDIA | Comandos de alto impacto precisam de contexto e retorno
+Evidência: a nova gestão tem exclusão com confirmação e preservação de histórico; isso deve continuar. Delegar é copiar a outro cargo/setor, não transferir nem escolher uma pessoa. Essa diferença precisa aparecer antes da confirmação.
+Correção: confirmar nome e grupo afetados; explicar o que permanece; separar ação destrutiva das frequentes; confirmar sucesso no local da tarefa. Oferecer histórico identificado. Não rotular desativar como excluir.
+Aceite: cancelar não altera; delegar mantém a origem; excluir retira da lista atual e conserva o histórico, conforme implementação candidata.
+
+F15 — MÉDIA | Formulários e estados devem ajudar a agir
+Evidência: algumas páginas têm somente mensagem de erro ou carregamento; rotinas mensais retornam antes de renderizar sua navegação em erro/vazio. Algumas mensagens descrevem implementação (“escopo persistido”, “marcações canônicas”).
+Correção: manter menu e retorno durante erros; dizer o que ocorreu, o que foi preservado e como tentar novamente. Vazio diferencia “sem cadastro”, “sem resultado no filtro” e “sem permissão”. Rascunho não pode desaparecer ao trocar de área sem aviso.
+Aceite: rede lenta, erro e lista vazia continuam navegáveis e não induzem recriação duplicada.
+
+F16 — MÉDIA | Acessibilidade e comportamento móvel precisam de verificação transversal
+Evidência de código: algumas áreas já têm alvos de 44 px e foco visível; isso é positivo. Tabelas mensais usam colunas mínimas fixas e há hierarquias/retornos implementados por página. Não houve medição de todos os contrastes ou tamanhos nesta sessão.
+Correção: padrão de foco, teclado, rótulos e nomes acessíveis; ações separadas; tabelas adaptadas; mensagens anunciadas; títulos e landmarks coerentes. Meta de produto: alvos frequentes de 44 px; mínimo normativo aplicável deve ser avaliado com as exceções de WCAG 2.2. Cor acompanha texto, nunca o substitui.
+Aceite: percorrer por teclado, ampliar a 200%, testar 320/375/768 px e computador sem perder ações ou contexto. Não declarar conformidade integral sem auditoria.
+
+3. MAPA RECOMENDADO
+
+INÍCIO
+  Visão da Direção: resumo dos setores e decisões.
+  Visão da Supervisão: próximas ações e acompanhamento diário.
+  Mesmos atalhos para os mesmos destinos; diferenças limitadas ao foco e às permissões.
+
+EQUIPE
+  Lista de pessoas, busca e filtros.
+  Acompanhamento individual: rotinas, avaliações e jornada.
+  Cadastro/edição disponível apenas aos perfis autorizados.
+
+ROTINAS
+  Gestão: criar, delegar, desativar e excluir, conforme permissão.
+  Execuções: hoje, mês e histórico, claramente identificados.
+  Uma rotina compartilhada continua pertencendo a cargo/setor; nenhuma atribuição individual é introduzida por este estudo.
+
+AVALIAÇÕES
+  Atribuições | Formulários | Para revisar.
+  Pessoa e formulário antes da confirmação.
+  Ciclo visível dentro da área. Administração de ciclos apenas a quem já pode fazê-la.
+  Formulários preservados por versão; alterações futuras não mudam critérios históricos.
+
+PONTO E PAUSAS
+  Consulta por pessoa, setor e data, dentro do acesso atual.
+  Sem transformar “sem registro” em conclusão de ausência ou atraso.
+  Ações pessoais de marcar ponto continuam pertencendo ao próprio usuário autorizado.
+
+PERFIL
+  Acesso pela identidade do usuário; não precisa competir com tarefas da equipe.
+
+RELATÓRIOS EXECUTIVOS
+  Manter destino e escopo atuais para os perfis correspondentes. Não prometer relatórios novos nesta etapa.
+  Não expor os controles administrativos ao CEO apenas por compartilhar o mesmo desenho.
+
+Para supervisores: ocultar os destinos administrativos indisponíveis e respeitar setores autorizados no servidor. Para colaboradores: manter sua própria navegação de trabalho; não mostrar o menu de gestão por causa de uma unificação visual. A coordenação de avaliações de supervisores conserva sua regra específica.
+
+4. VOLTAR E LOCALIZAÇÃO: CONTRATO DE NAVEGAÇÃO
+
+No Início: destino ativo; não há retorno sem significado.
+Em uma lista principal: menu ativo e contexto explícito.
+Em detalhe/revisão: “Voltar para [origem]”, mantendo busca, filtro, setor, pessoa e período.
+Em tarefa sequencial: voltar à etapa anterior sem perder preenchimento; cancelar é diferente de salvar.
+Em acesso direto: destino seguro e previsível da área, sem depender apenas de history.back().
+Na implementação, o estado de origem deve usar destinos internos permitidos e validados, sem redirecionamentos externos arbitrários. Se houver campos alterados, oferecer salvar ou descartar antes de sair; não criar confirmação para simples leitura sem alterações.
+
+Breadcrumbs podem ajudar hierarquias extensas, mas não devem ser empilhados mecanicamente com um segundo controle idêntico de voltar. A primeira proposta usa retorno nomeado nos detalhes e seção ativa no menu. Se houver hierarquia profunda, testar breadcrumb como alternativa em vez de duplicar navegação sem função.
+
+5. TRÊS VARIAÇÕES VISUAIS NO PROTÓTIPO
+
+A — MENU LATERAL ABERTO (RECOMENDADA)
+Rótulos completos, localização sempre visível e espaço central para filas e listas. Melhor ponto de partida para um sistema usado principalmente no computador e ainda em aprendizado. Custo: ocupa faixa lateral.
+
+B — MENU SUPERIOR
+Mesmos destinos em uma linha superior. Libera largura para tabelas, mas disputa espaço com contexto e ações. Pode ficar menos descobrível em telas menores; deve quebrar ou virar menu explícito, sem depender de faixa escondida.
+
+C — LATERAL COMPACTA, COM TEXTO
+Mantém rótulos em uma coluna menor, sem exigir que o usuário reconheça ícones sem legenda. Favorece pessoas habituadas e reduz espaço ocupado, mas os nomes têm menos respiro. Não é motivo para abreviar “Avaliações” ou esconder destinos.
+
+Todas seguem a preferência aprovada: um menu por tarefas. Não são três produtos nem três permissões diferentes. A recomendação é A; B e C servem para comparação concreta de densidade e orientação.
+
+6. DIREÇÃO VISUAL
+
+Preservar o verde e a identidade já reconhecidos no Hub. Dar função à cor: ação principal, seleção e estado com rótulo. Fundo claro e contraste de texto; menos blocos decorativos e menos variações de bordas. Não adicionar gráficos sem pergunta de gestão que os justifique.
+
+Hierarquia: título direto → referência de setor/período → próxima ação → lista → detalhe sob demanda. Um botão principal por contexto. Contagens só quando reais e acompanhadas da base e do período. Estados como “pendente”, “enviada”, “para revisar”, “revisada”, “inativa” e “excluída da gestão” precisam de linguagem consistente.
+
+Mais visual significa reconhecer o caminho e o estado rapidamente: seleção clara, etapas de avaliação, fila acionável, grupos e frequências legíveis. Não significa transformar registros de RH em notas, rankings ou conclusões não previstas pelo projeto.
+
+O protótipo usa exemplos declaradamente fictícios. Indicadores têm “—”; não apresenta números inventados como dados da clínica. O monograma e a família visual vêm da interface existente. Não há chamadas de rede para carregar dados reais.
+
+7. PLANO DE IMPLEMENTAÇÃO EM ORDEM
+
+ETAPA 1 — ORIENTAÇÃO E RETORNO
+Mapa único de navegação; seleção ativa por área; nomes claros; retorno nomeado com estado de origem; atalhos para destinos corretos; títulos e referências de período. Deve ser implementada antes de uma reformulação estética ampla.
+
+ETAPA 2 — ÁREAS DE TRABALHO
+Extrair filas e ações das páginas longas para Equipe, Rotinas, Avaliações e Ponto. Remover duplicações quando a nova entrada cobre a mesma tarefa. Preservar endereços antigos com encaminhamento seguro, para não quebrar favoritos.
+
+ETAPA 3 — PADRÕES VISUAIS E ESTADOS
+Cabeçalhos, botões, status, confirmações, formulários, erros, vazios, tabelas, foco, navegação móvel e legibilidade. Manter o comportamento consistente nos componentes compartilhados.
+
+ETAPA 4 — VALIDAÇÃO COM A EQUIPE
+Testar tarefas com gerente e supervisão reais, em ambiente com dados de teste, antes de publicar. Ajustar rótulos e fluxo onde houver hesitação. Separar problemas de interface de novas decisões sobre RH ou acesso.
+
+Sem prazo inventado: esforço depende da extensão final aprovada e do reaproveitamento das telas existentes. O protótipo não substitui a implementação, os testes de autorização nem a revisão das migrações já preparadas.
+
+8. ROTEIRO PARA TESTAR COM USUÁRIOS
+
+Perfis: administrador gerente; supervisão de um setor; supervisão com múltiplos setores. Verificar também que colaborador e CEO não ganham controles indevidos.
+
+T1. A partir do Início, localizar uma pessoa sem setor e chegar ao cadastro correto.
+T2. Abrir as rotinas pendentes de um setor e retornar mantendo o filtro.
+T3. Criar rotina compartilhada; explicar quem a receberá antes de confirmar.
+T4. Delegar a outro grupo; explicar se a origem continuará com a rotina.
+T5. Excluir uma rotina com execução e localizar o histórico depois.
+T6. Criar um formulário e explicar a diferença para rotina e avaliação atribuída.
+T7. Atribuir avaliação existente, localizar a pessoa e reconhecer o ciclo.
+T8. Revisar e voltar para a lista certa, com confirmação de sucesso.
+T9. Entrar diretamente em um detalhe por URL e encontrar um retorno útil.
+T10. Sair de formulário alterado e recuperar ou descartar o rascunho conscientemente.
+
+Registrar: conclusão sem ajuda, desvios de caminho, pedidos de ajuda, tentativas de voltar, perda de contexto e tempo por tarefa. Fazer uma rodada atual e outra proposta, com tarefas equivalentes e ordem alternada quando possível. Não há meta percentual comprovada ainda; comparar os resultados observados e definir os limiares antes de aprovar a publicação.
+
+Critérios que não dependem de opinião: nenhum alargamento de permissões; nenhum rascunho perdido sem aviso; nenhum atalho genérico para uma tarefa específica; retorno útil em acesso direto; nenhuma rotina histórica apagada por uma ação de interface; navegação possível por teclado.
+
+9. O QUE O PROTÓTIPO DEMONSTRA E O QUE NÃO DEMONSTRA
+
+Demonstra: navegação por tarefas; três arranjos do menu; troca de visão sem trocar destinos; Equipe → acompanhamento → revisão → voltar; distinção entre formulários e atribuições; criar, delegar e excluir rotina fictícia; contexto visível; confirmações e feedback.
+
+Não demonstra integração real, cálculos reais, cadastro completo, todos os formulários, autorização em produção, persistência de rascunhos após recarga, histórico do navegador/URL sincronizado nem todas as regras de ciclo. O seletor de setor apresenta contexto ilustrativo, não filtra uma base real. O seletor de período é uma demonstração da posição do controle; a implementação deve respeitar o período próprio de cada tarefa. As simulações são identificadas e não salvam dados no sistema.
+
+10. FONTES E REFERÊNCIAS
+
+Skill local utilizada: /Users/brenoalencar/.agents/skills/huashu-design/SKILL.md
+Guia de crítica: references/critique-guide.md; guia de verificação: references/verification.md. Aplicados ao estudo e protótipo, não como substituto de implementação de aplicação em produção.
+
+Nielsen Norman Group — heurísticas de visibilidade de estado, liberdade de navegação, consistência e linguagem do usuário:
+https://www.nngroup.com/articles/ten-usability-heuristics/
+
+W3C — navegação consistente e ordem previsível:
+https://www.w3.org/WAI/WCAG22/Understanding/consistent-navigation
+
+W3C — tamanho mínimo de alvos (24×24 CSS px, com exceções); a meta de 44 px para comandos frequentes é recomendação de produto deste estudo:
+https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+
+W3C — breadcrumb como representação de hierarquia:
+https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/
+
+GOV.UK — retorno com contexto e nomes de destino em sistemas administrativos; sua orientação é não empilhar esse componente com breadcrumbs:
+https://design-system.service.gov.uk/components/back-link/
+
+EVIDÊNCIAS NO CÓDIGO DA CANDIDATA
+src/app/hub/(protected)/layout.tsx — cabeçalho e composição global.
+src/app/hub/(protected)/troca-painel-button.tsx — prefixos de localização.
+src/app/hub/(protected)/_components/hub-navigation.tsx — menu horizontal e marcação exata.
+src/app/hub/(protected)/direcao/page.tsx — alertas genéricos, resumo, Manager360 e EvaluationManager.
+src/app/hub/(protected)/supervisor/page.tsx — filas, visões individuais e atribuição.
+src/app/hub/(protected)/direcao/manager-360.tsx — busca, seleção e conteúdo individual.
+src/app/hub/(protected)/supervisor/colaborador/[id]/page.tsx — retorno fixo.
+src/app/hub/(protected)/supervisao/rotinas/page.tsx — retorno, estados e layout mensal.
+src/app/hub/(protected)/avaliacao/[id]/page.tsx — retorno e finalização.
+src/app/hub/(protected)/avaliacao/[id]/revisar/page.tsx — retorno e pós-revisão.
+src/app/hub/(protected)/direcao/gestao/page.tsx — nova gestão e linguagem de rotinas/formulários.
+
+O estudo é base para decisão. A implantação deve ser uma etapa própria, após validar o caminho escolhido e testar a navegação integrada.

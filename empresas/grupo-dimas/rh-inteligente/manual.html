@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#111111" />
+  <title>Fluxo de Recrutamento | Grupo Dimas</title>
+  <style>
+    :root{
+      --ink:#151515;--muted:#686868;--paper:#f4f1eb;--surface:#fff;
+      --red:#e5222b;--red-dark:#aa151d;--line:#d8d3ca;--green:#157347;
+      --amber:#a05a00;--blue:#245c8a;--shadow:0 18px 50px rgba(20,20,20,.12);
+      --radius:18px;--sidebar:286px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"Aptos","Segoe UI",sans-serif;line-height:1.55}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    .app{display:grid;grid-template-columns:var(--sidebar) 1fr;min-height:100vh}
+    aside{position:sticky;top:0;height:100vh;background:#111;color:#fff;padding:28px 22px 24px;display:flex;flex-direction:column;z-index:5}
+    .brand{display:flex;align-items:center;gap:12px;margin-bottom:30px}
+    .mark{width:38px;height:38px;background:var(--red);clip-path:polygon(50% 0,100% 28%,88% 82%,50% 100%,12% 82%,0 28%)}
+    .brand strong{font-size:16px;letter-spacing:.02em}.brand small{display:block;color:#aaa;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+    .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#969696;margin:0 0 10px}
+    nav{display:grid;gap:3px;overflow:auto;padding-right:4px}
+    nav button{border:0;background:transparent;color:#bdbdbd;text-align:left;padding:9px 11px;border-radius:8px;font-size:13px}
+    nav button:hover,nav button.active{background:#282828;color:#fff}
+    nav button.active{box-shadow:inset 3px 0 var(--red)}
+    .aside-foot{margin-top:auto;border-top:1px solid #343434;padding-top:16px;color:#969696;font-size:11px}
+    main{min-width:0}
+    header{background:var(--surface);border-bottom:1px solid var(--line);padding:46px clamp(26px,5vw,74px) 36px}
+    .header-grid{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end;max-width:1260px;margin:auto}
+    h1{font-size:clamp(34px,5vw,68px);line-height:1.02;letter-spacing:-.045em;margin:0 0 14px;max-width:900px}
+    .lead{font-size:18px;color:var(--muted);max-width:760px;margin:0}
+    .version{font-size:12px;color:var(--muted);text-align:right;white-space:nowrap}
+    .tools{max-width:1260px;margin:26px auto 0;display:flex;gap:10px;align-items:center}
+    .search{width:min(480px,100%);border:1px solid var(--line);background:#fafafa;border-radius:999px;padding:11px 16px;outline:none}
+    .search:focus{border-color:#999;background:#fff}
+    .content{max-width:1260px;margin:auto;padding:36px clamp(26px,5vw,74px) 90px}
+    .overview{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 34px}
+    .stage-chip{border:1px solid var(--line);background:#fff;padding:14px 12px;text-align:left;min-height:92px;position:relative}
+    .stage-chip:first-child{border-radius:14px 0 0 14px}.stage-chip:last-child{border-radius:0 14px 14px 0}
+    .stage-chip:not(:last-child)::after{content:"›";position:absolute;right:-8px;top:31px;background:var(--red);color:#fff;width:16px;height:26px;display:grid;place-items:center;z-index:1}
+    .stage-chip span{font-size:11px;color:var(--red);font-weight:700;letter-spacing:.08em}.stage-chip b{display:block;margin-top:5px;font-size:13px;line-height:1.25}
+    section{scroll-margin-top:24px;margin:0 0 24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 5px 18px rgba(20,20,20,.035)}
+    .section-head{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line)}
+    .num{font-size:13px;font-weight:800;color:#fff;background:var(--red);width:38px;height:38px;border-radius:50%;display:grid;place-items:center}
+    .section-head h2{font-size:22px;letter-spacing:-.02em;margin:0}.section-head p{margin:2px 0 0;color:var(--muted);font-size:13px}
+    .status{font-size:11px;text-transform:uppercase;letter-spacing:.09em;font-weight:700;color:var(--green);border:1px solid #a8d3bd;border-radius:999px;padding:6px 9px}
+    .status.future{color:var(--amber);border-color:#e0c49d}
+    .section-body{padding:24px;display:grid;gap:24px}
+    .columns{display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
+    h3{font-size:14px;text-transform:uppercase;letter-spacing:.065em;margin:0 0 12px}
+    p{margin-top:0}.muted{color:var(--muted)}
+    .steps{counter-reset:step;display:grid;gap:12px}
+    .step{counter-increment:step;display:grid;grid-template-columns:34px 1fr;gap:11px;align-items:start}
+    .step::before{content:counter(step);width:28px;height:28px;border-radius:50%;border:1px solid #bbb;display:grid;place-items:center;font-weight:700;font-size:12px;margin-top:1px}
+    .step b{display:block;font-size:14px}.step span{color:var(--muted);font-size:13px}
+    .field-list{display:grid;gap:8px}
+    .field{display:grid;grid-template-columns:1fr auto;gap:12px;padding:11px 12px;background:#f7f6f3;border-radius:9px;border:1px solid #e7e3dc}
+    .field b{font-size:13px}.field small{display:block;color:var(--muted);margin-top:2px}.tag{font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;align-self:start;padding:4px 7px;border-radius:999px;background:#e7e7e7;color:#555}
+    .tag.req{background:var(--red);color:#fff}.tag.auto{background:#dce9f5;color:var(--blue)}.tag.rh{background:#e1f0e8;color:var(--green)}
+    .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .rule{border-top:3px solid var(--ink);padding:12px;background:#f7f6f3;font-size:12px}.rule strong{display:block;font-size:13px;margin-bottom:4px}.rule.red{border-color:var(--red)}.rule.green{border-color:var(--green)}
+    details{border-top:1px solid var(--line);padding:0 24px;background:#fbfaf8}
+    summary{padding:16px 0;font-weight:700;font-size:13px;cursor:pointer}
+    details .detail-inner{padding:0 0 18px;color:var(--muted);font-size:13px}
+    .decision{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .decision article{border:1px solid var(--line);padding:14px;border-radius:10px}.decision h4{margin:0 0 6px;font-size:14px}.decision p{font-size:12px;color:var(--muted);margin:0}
+    .decision .approve h4{color:var(--green)}.decision .correct h4{color:var(--amber)}.decision .reject h4{color:var(--red-dark)}
+    .golden{font-size:20px;line-height:1.35;letter-spacing:-.02em;border-left:5px solid var(--red);padding:2px 0 2px 18px;margin:4px 0}
+    .hidden{display:none!important}
+    .no-results{display:none;text-align:center;color:var(--muted);padding:50px 20px}.no-results.show{display:block}
+    footer{padding:28px clamp(26px,5vw,74px);background:#111;color:#aaa;font-size:12px}
+    .mobile-menu{display:none}
+    @media(max-width:900px){
+      .app{display:block}aside{position:fixed;inset:0 auto 0 0;width:280px;transform:translateX(-100%);transition:.25s;box-shadow:var(--shadow)}aside.open{transform:none}.mobile-menu{display:inline-flex;border:0;background:#111;color:#fff;border-radius:8px;padding:9px 12px;white-space:nowrap}.header-grid{grid-template-columns:1fr}.version{text-align:left}.columns{grid-template-columns:1fr}.rules,.decision{grid-template-columns:1fr}.overview{overflow:auto;grid-template-columns:repeat(5,160px);padding-bottom:5px}.tools{align-items:stretch}.search{flex:1;min-width:0}.section-head{grid-template-columns:40px 1fr;align-items:start}.section-head .status{grid-column:2;justify-self:start}.section-head h2{font-size:20px}.section-head p{line-height:1.4}
+    }
+    @media print{aside,.tools,.overview{display:none}.app{display:block}header{padding:20px 0}.content{padding:20px 0}section{break-inside:avoid;box-shadow:none}body{background:#fff}}
+  </style>
+</head>
+<body><div style="position:relative;z-index:99999;background:#153e35;color:white;padding:12px 20px;font:14px system-ui"><a style="color:white" href="./">← Voltar ao projeto</a> · Manual · Documento de referência; consultar a data e os limites da versão.</div>
+  <div class="app">
+    <aside id="sidebar">
+      <div class="brand"><div class="mark" aria-hidden="true"></div><div><strong>Grupo Dimas</strong><small>Manual do RH</small></div></div>
+      <p class="eyebrow">Navegação</p>
+      <nav id="nav"></nav>
+      <div class="aside-foot">Fluxo validado até Entrevista RH<br>Versão 1.0 · Setembro de 2026</div>
+    </aside>
+    <main>
+      <header>
+        <div class="header-grid">
+          <div><p class="eyebrow">Recrutamento e Seleção</p><h1>Do currículo à aprovação do RH</h1><p class="lead">Tutorial navegável das fases, campos, decisões e automações do processo do Grupo Dimas.</p></div>
+          <div class="version">Gestores + Recursos Humanos<br><b>Ambiente de produção</b></div>
+        </div>
+        <div class="tools"><button class="mobile-menu" id="menu">☰ Fases</button><input class="search" id="search" placeholder="Buscar campo, fase ou procedimento…" aria-label="Buscar no manual"></div>
+      </header>
+
+      <div class="content">
+        <div class="overview" aria-label="Resumo do fluxo">
+          <button class="stage-chip" data-jump="talentos"><span>01</span><b>Banco de Talentos</b></button>
+          <button class="stage-chip" data-jump="requisicao"><span>02</span><b>Requisição e aprovação</b></button>
+          <button class="stage-chip" data-jump="divulgacao"><span>03</span><b>Divulgação e banner</b></button>
+          <button class="stage-chip" data-jump="triagem"><span>04</span><b>Triagem e candidaturas</b></button>
+          <button class="stage-chip" data-jump="entrevista"><span>05</span><b>Entrevista RH</b></button>
+        </div>
+
+        <section id="modelo" data-title="Visão geral">
+          <div class="section-head"><div class="num">0</div><div><h2>O que cada card representa</h2><p>A separação que mantém o processo seguro e rastreável</p></div><span class="status">Regra central</span></div>
+          <div class="section-body">
+            <div class="rules">
+              <div class="rule red"><strong>Candidato</strong>Cadastro original preservado no Banco de Talentos.</div>
+              <div class="rule"><strong>Vaga</strong>Organiza aprovação, divulgação, triagem e entrevistas.</div>
+              <div class="rule green"><strong>Candidatura</strong>Relação independente entre uma pessoa e uma vaga.</div>
+            </div>
+            <p class="golden"><b>Regra de ouro:</b> a vaga organiza o processo, o candidato preserva o cadastro e a candidatura recebe a decisão.</p>
+          </div>
+        </section>
+
+        <section id="talentos" data-title="Banco de Talentos">
+          <div class="section-head"><div class="num">1</div><div><h2>Cadastro no Banco de Talentos</h2><p>Da submissão do formulário ao card da pessoa</p></div><span class="status">Produção</span></div>
+          <div class="section-body columns">
+            <div><h3>Passo a passo</h3><div class="steps">
+              <div class="step"><div><b>A pessoa abre o formulário público</b><span>Pode se cadastrar mesmo sem existir uma vaga aberta.</span></div></div>
+              <div class="step"><div><b>Preenche dados e interesses</b><span>Seleciona cargo padronizado e cidades em vez de escrever livremente.</span></div></div>
+              <div class="step"><div><b>Anexa o currículo</b><span>Novos arquivos devem ser enviados em PDF.</span></div></div>
+              <div class="step"><div><b>O card é criado</b><span>O cadastro original entra no Banco de Talentos e inicia a análise.</span></div></div>
+            </div></div>
+            <div><h3>Campos principais</h3><div class="field-list">
+              <div class="field"><div><b>Nome e contatos</b><small>Identificação, e-mail e WhatsApp</small></div><span class="tag req">Obrigatório</span></div>
+              <div class="field"><div><b>Cargo principal de interesse</b><small>Opções vindas dos perfis ativos</small></div><span class="tag req">Obrigatório</span></div>
+              <div class="field"><div><b>Outros cargos de interesse</b><small>Interesses adicionais padronizados</small></div><span class="tag">Opcional</span></div>
+              <div class="field"><div><b>Cidades onde deseja trabalhar</b><small>Múltipla escolha, mudança e outras cidades</small></div><span class="tag req">Obrigatório</span></div>
+              <div class="field"><div><b>Currículo</b><small>Arquivo em formato PDF</small></div><span class="tag req">Obrigatório</span></div>
+            </div></div>
+          </div>
+          <details><summary>Como a localização influencia a aderência</summary><div class="detail-inner">Mesma cidade ou cidade escolhida recebe prioridade alta. Cidade próxima ou disponibilidade para mudança recebe prioridade secundária. Outra cidade sem disponibilidade não é selecionada automaticamente, mas continua disponível para decisão manual do RH. A cidade é lida da unidade conectada à vaga.</div></details>
+        </section>
+
+        <section id="requisicao" data-title="Requisição da vaga">
+          <div class="section-head"><div class="num">2</div><div><h2>Requisição e decisão da vaga</h2><p>O gestor solicita e o RH confere antes da divulgação</p></div><span class="status">Produção</span></div>
+          <div class="section-body">
+            <div class="columns">
+              <div><h3>Fluxo</h3><div class="steps">
+                <div class="step"><div><b>O gestor preenche a requisição</b><span>Informa cargo, unidade e condições necessárias.</span></div></div>
+                <div class="step"><div><b>A vaga é criada e conectada</b><span>O card chega ao pipe Recrutamento e Seleção ligado ao pedido original.</span></div></div>
+                <div class="step"><div><b>O RH confere os dados</b><span>A decisão somente deve ser tomada depois da validação.</span></div></div>
+              </div></div>
+              <div><h3>Conferência obrigatória</h3><div class="field-list">
+                <div class="field"><div><b>Cargo ou perfil da vaga</b><small>Conectado a um perfil ativo</small></div><span class="tag req">Obrigatório</span></div>
+                <div class="field"><div><b>Unidade</b><small>Ativa, com nome, cidade e marca</small></div><span class="tag req">Obrigatório</span></div>
+                <div class="field"><div><b>Condições da vaga</b><small>Salário, benefícios, jornada, escala, contrato e urgência</small></div><span class="tag rh">Conferir</span></div>
+                <div class="field"><div><b>Decisão do RH</b><small>Aprovar, corrigir ou reprovar</small></div><span class="tag rh">RH</span></div>
+              </div></div>
+            </div>
+            <div class="decision">
+              <article class="approve"><h4>Aprovar</h4><p>Conferir, registrar a aprovação e permitir o avanço para Divulgação.</p></article>
+              <article class="correct"><h4>Corrigir</h4><p>Manter na fase, corrigir o card ou o cadastro relacionado, salvar e só então aprovar.</p></article>
+              <article class="reject"><h4>Reprovar</h4><p>Registrar a reprovação no campo correto. A vaga não deve gerar banner nem candidaturas.</p></article>
+            </div>
+          </div>
+          <details><summary>Tutorial de correção</summary><div class="detail-inner">Não aprove enquanto existir inconsistência. Corrija no próprio card quando o dado for exclusivo do pedido. Se o erro vier do perfil ou da unidade, corrija o cadastro de origem. Reconfira especialmente cargo, unidade, marca e situação ativa. Salve a alteração e depois registre a aprovação.</div></details>
+          <details><summary>Tutorial de reprovação</summary><div class="detail-inner">Use o campo de decisão da fase e informe a justificativa quando disponível. Não mova manualmente o card para uma fase incompatível. Depois da reprovação, confirme que ele não avançou para Divulgação, não gerou banner e não criou candidaturas.</div></details>
+        </section>
+
+        <section id="divulgacao" data-title="Divulgação e banner">
+          <div class="section-head"><div class="num">3</div><div><h2>Divulgação e banner</h2><p>Arte anexada à vaga antes do início da triagem</p></div><span class="status">Produção</span></div>
+          <div class="section-body columns">
+            <div><h3>Passo a passo do RH</h3><div class="steps">
+              <div class="step"><div><b>Abra a vaga em Divulgação</b><span>Confirme que o banner está anexado.</span></div></div>
+              <div class="step"><div><b>Revise a arte</b><span>Confira marca, cargo, unidade, textos e legibilidade.</span></div></div>
+              <div class="step"><div><b>Publique nos canais escolhidos</b><span>O RH controla o momento e os canais de divulgação.</span></div></div>
+              <div class="step"><div><b>Envie para Triagem</b><span>Avance quando a divulgação estiver pronta.</span></div></div>
+            </div></div>
+            <div><h3>Dados usados pela automação</h3><div class="field-list">
+              <div class="field"><div><b>Marca da unidade</b><small>Seleciona o template correto</small></div><span class="tag auto">Automático</span></div>
+              <div class="field"><div><b>Cargo e unidade</b><small>Conteúdo principal do banner</small></div><span class="tag auto">Automático</span></div>
+              <div class="field"><div><b>Anexo do banner</b><small>Resultado esperado no card da vaga</small></div><span class="tag auto">Gerado</span></div>
+            </div></div>
+          </div>
+          <details><summary>Se o banner não for gerado</summary><div class="detail-inner">Confirme a fase Divulgação; perfil conectado e ativo; unidade conectada e ativa; nome, cidade e marca da unidade; e apenas uma unidade válida conectada ao card. Não avance para Triagem com banner ausente ou incorreto.</div></details>
+        </section>
+
+        <section id="triagem" data-title="Triagem e candidaturas">
+          <div class="section-head"><div class="num">4</div><div><h2>Triagem e candidaturas</h2><p>Entradas automáticas, manuais e posteriores</p></div><span class="status">Produção</span></div>
+          <div class="section-body">
+            <div class="rules">
+              <div class="rule red"><strong>Automática inicial</strong>A IA cruza perfil, currículo, cargo e localização.</div>
+              <div class="rule"><strong>Manual pelo RH</strong>O campo de inclusão cria uma candidatura, mas não aprova.</div>
+              <div class="rule green"><strong>Posterior</strong>Um novo candidato aderente pode entrar enquanto a vaga estiver aberta.</div>
+            </div>
+            <div class="columns">
+              <div><h3>Adicionar candidato manualmente</h3><div class="steps">
+                <div class="step"><div><b>Abra o card da vaga em Triagem</b><span>Localize o campo de inclusão manual.</span></div></div>
+                <div class="step"><div><b>Selecione a pessoa</b><span>Ela continua preservada no Banco de Talentos.</span></div></div>
+                <div class="step"><div><b>Salve a seleção</b><span>A automação verifica a chave candidateId:vacancyId.</span></div></div>
+                <div class="step"><div><b>Aguarde a nova candidatura</b><span>O card nasce conectado à pessoa e à vaga, sem duplicidade.</span></div></div>
+              </div></div>
+              <div><h3>Campos e registros</h3><div class="field-list">
+                <div class="field"><div><b>Adicionar candidato manualmente</b><small>Ação disponível no card da vaga</small></div><span class="tag rh">RH</span></div>
+                <div class="field"><div><b>Candidato conectado</b><small>Origem no Banco de Talentos</small></div><span class="tag auto">Automático</span></div>
+                <div class="field"><div><b>Vaga conectada</b><small>Vaga específica desta participação</small></div><span class="tag auto">Automático</span></div>
+                <div class="field"><div><b>Chave da candidatura</b><small>candidateId:vacancyId</small></div><span class="tag auto">Antiduplicidade</span></div>
+                <div class="field"><div><b>Classificação e laudo</b><small>Aderência calculada para esta vaga</small></div><span class="tag auto">Automático</span></div>
+              </div></div>
+            </div>
+          </div>
+          <details><summary>Como entra um candidato que chegou depois</summary><div class="detail-inner">Após a classificação do novo cadastro, a automação o compara com vagas abertas em Divulgação, Triagem, Entrevista RH e Entrevista com Gestor. Quando existe aderência e ainda não existe a combinação candidato–vaga, uma nova candidatura independente é criada. A decisão continua sendo do RH.</div></details>
+        </section>
+
+        <section id="aprovacao" data-title="Aprovação do candidato">
+          <div class="section-head"><div class="num">5</div><div><h2>Como aprovar ou reprovar um candidato</h2><p>A decisão ocorre sempre na candidatura individual</p></div><span class="status">Atenção</span></div>
+          <div class="section-body">
+            <p class="golden">Candidatura automática e candidatura manual são aprovadas do <b>mesmo modo</b>. A origem muda; a decisão não.</p>
+            <div class="columns">
+              <div><h3>Aprovação</h3><div class="steps">
+                <div class="step"><div><b>Abra a vaga</b><span>Observe os cards de candidatos conectados.</span></div></div>
+                <div class="step"><div><b>Use os três pontos da pessoa</b><span>Abra o card individual no pipe Candidaturas nas Vagas.</span></div></div>
+                <div class="step"><div><b>Confirme candidato e vaga</b><span>A mesma pessoa pode participar de várias vagas.</span></div></div>
+                <div class="step"><div><b>Preencha Decisão humana da Triagem</b><span>Escolha “Aprovado para Entrevista RH”.</span></div></div>
+                <div class="step"><div><b>Salve a decisão</b><span>A candidatura avança para Entrevista RH e segue as regras de comunicação.</span></div></div>
+              </div></div>
+              <div><h3>Campos da candidatura</h3><div class="field-list">
+                <div class="field"><div><b>Decisão humana da Triagem</b><small>Aprovado, standby ou reprovado</small></div><span class="tag rh">RH</span></div>
+                <div class="field"><div><b>Status da Entrevista RH</b><small>Aguardando, agendada, reagendamento ou cancelada</small></div><span class="tag auto">Sincronizado</span></div>
+                <div class="field"><div><b>Data e Hora da Entrevista RH</b><small>Horário confirmado no Google Agenda</small></div><span class="tag auto">Sincronizado</span></div>
+                <div class="field"><div><b>Link do Google Meet</b><small>Videoconferência individual</small></div><span class="tag auto">Sincronizado</span></div>
+              </div></div>
+            </div>
+          </div>
+          <details><summary>O que acontece na reprovação</summary><div class="detail-inner">Escolher “Reprovado nesta vaga” encerra somente aquela candidatura. O cadastro original permanece no Banco de Talentos e as decisões tomadas em outras vagas não são alteradas.</div></details>
+          <details><summary>Erros de operação a evitar</summary><div class="detail-inner">Não aprove pelo card do Banco de Talentos. Não use a inclusão manual como decisão. Não altere outra candidatura da mesma pessoa. Não mova o card da vaga para representar a aprovação de apenas um candidato.</div></details>
+        </section>
+
+        <section id="comunicacao" data-title="DISC e WhatsApp">
+          <div class="section-head"><div class="num">6</div><div><h2>DISC e WhatsApp</h2><p>A comunicação segue a situação individual da candidatura</p></div><span class="status">Produção</span></div>
+          <div class="section-body">
+            <div class="decision">
+              <article class="correct"><h4>DISC pendente</h4><p>O WhatsApp solicita o envio ou preenchimento do DISC antes do convite de agendamento.</p></article>
+              <article class="approve"><h4>DISC já disponível</h4><p>O sistema não repete a solicitação e encaminha o convite de entrevista.</p></article>
+              <article><h4>DISC não obrigatório</h4><p>O candidato recebe diretamente o link para escolher data e horário.</p></article>
+            </div>
+            <div class="field-list">
+              <div class="field"><div><b>WhatsApp do candidato</b><small>Destino da comunicação</small></div><span class="tag req">Obrigatório</span></div>
+              <div class="field"><div><b>DISC obrigatório</b><small>Regra herdada do perfil da vaga</small></div><span class="tag auto">Regra</span></div>
+              <div class="field"><div><b>Link de agendamento</b><small>Página do Google Agenda</small></div><span class="tag auto">Mensagem</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="entrevista" data-title="Entrevista RH">
+          <div class="section-head"><div class="num">7</div><div><h2>Agendamento e Entrevista RH</h2><p>Da escolha do horário à decisão final do RH</p></div><span class="status">Produção</span></div>
+          <div class="section-body columns">
+            <div><h3>Agendamento</h3><div class="steps">
+              <div class="step"><div><b>O candidato escolhe o horário</b><span>Usa o link recebido pelo WhatsApp.</span></div></div>
+              <div class="step"><div><b>O Google confirma a reserva</b><span>Envia e-mail e cria o link individual do Meet.</span></div></div>
+              <div class="step"><div><b>O sistema sincroniza</b><span>Consulta em ciclos de cinco minutos dentro do período operacional.</span></div></div>
+              <div class="step"><div><b>O RH acompanha no card</b><span>Status, data, hora e Meet aparecem na candidatura conectada.</span></div></div>
+            </div></div>
+            <div><h3>Conclusão da entrevista</h3><div class="field-list">
+              <div class="field"><div><b>Parecer da Entrevista RH</b><small>Evidências e observações objetivas</small></div><span class="tag rh">RH</span></div>
+              <div class="field"><div><b>Decisão da Entrevista RH</b><small>Aprovado, standby, reprovado ou não compareceu</small></div><span class="tag rh">RH</span></div>
+              <div class="field"><div><b>Data da Decisão da Entrevista RH</b><small>Registro temporal da decisão</small></div><span class="tag rh">Preencher</span></div>
+            </div></div>
+          </div>
+          <details><summary>Onde o RH visualiza quem já agendou</summary><div class="detail-inner">No card da vaga, os blocos das candidaturas conectadas exibem o Status da Entrevista RH. “Agendada” identifica imediatamente quem confirmou. Para abrir os dados completos, use os três pontos do candidato e veja data, hora e link do Meet no card individual.</div></details>
+        </section>
+
+        <section id="gestor" data-title="Entrevista com Gestor">
+          <div class="section-head"><div class="num">8</div><div><h2>Entrevista com Gestor</h2><p>Continuidade do processo após aprovação do RH</p></div><span class="status future">A desenhar</span></div>
+          <div class="section-body"><p>Esta fase será mapeada em reunião específica. O convite, o agendamento, os campos de avaliação, a decisão final e as automações ainda não fazem parte deste manual.</p></div>
+        </section>
+
+        <div id="noResults" class="no-results"><b>Nenhum conteúdo encontrado.</b><br>Experimente buscar por “banner”, “aprovação”, “DISC” ou “agendamento”.</div>
+      </div>
+      <footer>Manual operacional do Recrutamento e Seleção · Grupo Dimas · Escopo validado até Entrevista RH</footer>
+    </main>
+  </div>
+  <script>
+    const sections=[...document.querySelectorAll('section')];
+    const nav=document.getElementById('nav');
+    sections.forEach(s=>{const b=document.createElement('button');b.textContent=s.dataset.title;b.dataset.target=s.id;b.onclick=()=>{s.scrollIntoView({behavior:'smooth'});document.getElementById('sidebar').classList.remove('open')};nav.appendChild(b)});
+    document.querySelectorAll('[data-jump]').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.jump).scrollIntoView({behavior:'smooth'}));
+    const navButtons=[...nav.querySelectorAll('button')];
+    const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){navButtons.forEach(b=>b.classList.toggle('active',b.dataset.target===e.target.id))}})},{rootMargin:'-20% 0px -70%'});
+    sections.forEach(s=>observer.observe(s));
+    const search=document.getElementById('search');
+    search.addEventListener('input',()=>{const q=search.value.trim().toLocaleLowerCase('pt-BR');let visible=0;sections.forEach(s=>{const show=!q||s.innerText.toLocaleLowerCase('pt-BR').includes(q);s.classList.toggle('hidden',!show);if(show)visible++});document.getElementById('noResults').classList.toggle('show',visible===0);document.querySelector('.overview').classList.toggle('hidden',!!q)});
+    document.getElementById('menu').onclick=()=>document.getElementById('sidebar').classList.toggle('open');
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('sidebar').classList.remove('open');if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();search.focus()}});
+  </script>
+</body>
+</html>
