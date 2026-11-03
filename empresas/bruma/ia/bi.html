@@ -8,9 +8,10 @@
 <style>
 .section { background: white; border-radius: 16px; padding: 36px; margin-bottom: 28px; border: 1px solid #e5e7eb; line-height: 1.75; }
 .section h2 { margin-top: 0; }
-.dash { background: #0F1115; color: #e2e8f0; border-radius: 12px; padding: 24px; margin: 20px 0; font-family: monospace; font-size: 14px; }
-.dash .kpi { display: inline-block; background: #1a2332; padding: 12px 16px; margin: 8px; border-radius: 8px; min-width: 140px; }
-.dash .kpi strong { display: block; color: #0047FF; font-size: 20px; }
+.dash { background: #0F1115; color: #e2e8f0; border-radius: 12px; padding: 24px; margin: 20px 0; }
+.kpi { display: inline-block; background: #1a2332; padding: 14px 18px; margin: 8px; border-radius: 8px; min-width: 150px; text-align: center; }
+.kpi strong { display: block; color: #0047FF; font-size: 22px; }
+.kpi span { font-size: 12px; color: #94a3b8; }
 </style>
 </head>
 <body>
@@ -19,26 +20,29 @@
 <nav class="crumb"><a href="../../../">GoFluxo</a> / <a href="../../">Empresas</a> / <a href="../">Bruma</a> / IA</nav>
 <section class="section">
 <h1>BI e Indicadores na Bruma</h1>
-<p>O BI da Bruma consolida os dados da operação (vendas, estoque, custo logístico e margem) para que os sócios vejam o que está acontecendo sem depender de planilhas manuais. Os agentes autônomos alimentam e leem esses indicadores.</p>
-<h2>Indicadores principais</h2>
+<p>O BI consolida os dados da operação para que os sócios vejam o que está acontecendo sem depender de planilhas manuais. Os agentes autônomos alimentam e leem esses indicadores para gerar alertas.</p>
+<h2>Indicadores principais e o que significam</h2>
 <ul>
-<li><strong>Acuracidade de estoque:</strong> saldo do WMS versus saldo esperado pela Bruma. Meta inicial: acima de 98%.</li>
-<li><strong>SLA de entrega:</strong> percentual de pedidos entregues no prazo combinado.</li>
-<li><strong>Margem por canal e região:</strong> receita menos CMV menos custo logístico estimado.</li>
-<li><strong>Giro de estoque:</strong> quantas vezes o estoque gira no período.</li>
+<li><strong>Acuracidade de estoque:</strong> saldo do WMS versus saldo esperado pela Bruma (entradas menos saídas). Meta inicial: acima de 98% na medida absoluta. Abaixo disso gera alerta para Breno e Longuinho.</li>
+<li><strong>SLA de entrega:</strong> percentual de pedidos entregues no prazo combinado. Medido da emissão da NF até a confirmação de entrega.</li>
+<li><strong>Margem bruta estimada:</strong> receita menos CMV menos custo logístico estimado (armazenagem + manuseio). Por canal e por região.</li>
+<li><strong>Giro de estoque:</strong> quantas vezes o estoque gira no período. SKUs com giro baixo geram alerta de custo de armazenagem.</li>
 <li><strong>Custo de armazenagem por SKU:</strong> para identificar produtos que consomem margem.</li>
+<li><strong>Pedidos em atraso:</strong> quantidade e valor de pedidos sem atualização de status além do prazo.</li>
 </ul>
-<h2>Exemplo de tela de dashboard</h2>
+<h2>Exemplo de dashboard semanal</h2>
 <div class="dash">
-<div class="kpi"><strong>98,4%</strong>Acuracidade estoque</div>
-<div class="kpi"><strong>92%</strong>Pedidos no prazo</div>
-<div class="kpi"><strong>R$ 48.200</strong>Receita semana</div>
-<div class="kpi"><strong>31%</strong>Margem bruta est.</div>
-<div class="kpi"><strong>4,1x</strong>Giro mensal</div>
-<p style="margin-top:16px; color:#94a3b8;">Atualizado automaticamente pelos agentes a partir do WMS, CRM e segundo cérebro.</p>
+<div class="kpi"><strong>98,4%</strong><span>Acuracidade estoque</span></div>
+<div class="kpi"><strong>92%</strong><span>Pedidos no prazo</span></div>
+<div class="kpi"><strong>R$ 48.200</strong><span>Receita semana</span></div>
+<div class="kpi"><strong>31%</strong><span>Margem bruta est.</span></div>
+<div class="kpi"><strong>4,1x</strong><span>Giro mensal</span></div>
+<div class="kpi"><strong>3</strong><span>Pedidos em atraso</span></div>
+<p style="margin-top:12px; color:#94a3b8; font-size:13px;">Atualizado pelos agentes a partir do WMS, CRM e segundo cérebro. Semana de referência: piloto Real Móveis.</p>
 </div>
-<p>No piloto o dashboard pode ser uma planilha atualizada pelos agentes ou uma ferramenta simples. O importante é que os números sejam os mesmos que os agentes usam para gerar alertas. À medida que a operação cresce, a mesma base alimenta visualizações mais ricas sem mudar a lógica de cálculo.</p>
-<p>O BI não substitui a decisão. Ele mostra o que aconteceu e o que está fora do padrão para que Breno, Armando e Longuinho decidam.</p>
+<h2>Como a IA usa esses indicadores</h2>
+<p>O agente de acuracidade calcula a métrica toda semana e alimenta o dashboard. Se cair abaixo de 98%, gera alerta. O agente de margem consolida os números e envia o resumo para Longuinho. O agente de estoque parado usa o giro e o custo de armazenagem para sugerir ações. Os números do BI são os mesmos que os agentes usam. Não há dois conjuntos de dados.</p>
+<p>No piloto o dashboard pode ser uma planilha atualizada pelos agentes ou uma ferramenta simples. O importante é a consistência dos cálculos e a visibilidade para os sócios.</p>
 <p><a href="../">← Voltar à Bruma</a></p>
 </section>
 </main>
