@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CRM e Canais · Bruma</title>
 <link rel="stylesheet" href="../../../portal.css">
-<style>.section { background: white; border-radius: 16px; padding: 36px; margin-bottom: 28px; border: 1px solid #e5e7eb; line-height: 1.75; } .section h2 { margin-top: 0; }</style>
+<style>
+.section { background: white; border-radius: 16px; padding: 36px; margin-bottom: 28px; border: 1px solid #e5e7eb; line-height: 1.75; }
+.section h2 { margin-top: 0; color: #0F1115; }
+.flow { background: #f8fafc; border-left: 4px solid #0047FF; padding: 16px 20px; margin: 16px 0; }
+</style>
 </head>
 <body>
 <header><a class="brand" href="../../../">go<span>fluxo</span> ↗</a></header>
@@ -13,19 +17,28 @@
 <nav class="crumb"><a href="../../../">GoFluxo</a> / <a href="../../">Empresas</a> / <a href="../">Bruma</a> / IA</nav>
 <section class="section">
 <h1>CRM e Canais na Bruma</h1>
-<p>O CRM da Bruma é o sistema onde ficam registrados os clientes B2B (representantes e contas diretas), os pedidos, o histórico de compras e o status de cada entrega. Ele não substitui o WMS do 3PL. Ele é a camada comercial da Bruma.</p>
-<h2>O que o CRM precisa fazer</h2>
+<p>O CRM da Bruma é a camada comercial da empresa. Ele registra clientes B2B (representantes e contas diretas), pedidos, histórico de compras, status de entrega e oportunidades de recompra. Ele não substitui o WMS do 3PL. O WMS cuida do físico no CD. O CRM cuida da relação com o cliente e do fluxo comercial da Bruma.</p>
+<h2>O que o CRM precisa fazer no piloto</h2>
 <ul>
-<li>Cadastro de clientes B2B com CNPJ, região, representante responsável e condições comerciais.</li>
-<li>Registro de pedidos (manual no piloto ou via integração com representantes).</li>
-<li>Visibilidade do saldo disponível no CD (via integração com o WMS ou atualização periódica).</li>
-<li>Acompanhamento do status do pedido (em separação, em trânsito, entregue).</li>
-<li>Histórico de compras por cliente para o comercial e para os agentes de follow-up.</li>
-<li>Registro de reclamações e oportunidades de recompra.</li>
+<li>Cadastro de clientes B2B com CNPJ, região, representante responsável, condições comerciais e limite de crédito se houver.</li>
+<li>Registro de pedidos (manual no início ou via formulário do representante).</li>
+<li>Consulta de saldo disponível no CD (via integração ou atualização diária do WMS).</li>
+<li>Geração de ordem para emissão de NF da Bruma e envio do pedido ao 3PL.</li>
+<li>Acompanhamento do status: em separação, em trânsito, entregue, com exceção.</li>
+<li>Histórico completo de compras por cliente para o comercial e para os agentes de follow-up.</li>
+<li>Registro de reclamações, devoluções e oportunidades de recompra.</li>
+<li>Visão por representante: volume, margem estimada e clientes ativos.</li>
 </ul>
-<h2>Exemplo de fluxo no piloto</h2>
-<p>O representante Anderson registra um pedido de 20 unidades do produto X para a Real Móveis. O CRM valida se há saldo no CD. Se houver, gera a ordem para emissão da NF da Bruma e envia o pedido ao WMS do Adriano. O cliente (ou o representante) acompanha o status. Após a entrega, o agente de follow-up usa os dados do CRM para enviar a mensagem de confirmação e registrar a resposta.</p>
-<p>No início o CRM pode ser uma planilha estruturada ou uma ferramenta simples. O importante é que os dados estejam centralizados e que os agentes consigam ler e escrever neles. À medida que o volume cresce, a mesma lógica migra para um sistema mais robusto sem mudar as regras de negócio.</p>
+<h2>Fluxo de um pedido no piloto (Real Móveis)</h2>
+<div class="flow"><strong>1. Entrada</strong><br>Representante Anderson registra pedido de 20 unidades do produto X para a Real Móveis (28 lojas no MA). CRM valida CNPJ e região (dentro do NECO).</div>
+<div class="flow"><strong>2. Validação de estoque</strong><br>CRM consulta saldo no CD Itajaí. Há 85 unidades. Pedido é liberado. Se não houvesse, o comercial decide se espera reposição ou oferece substituto.</div>
+<div class="flow"><strong>3. NF e envio ao 3PL</strong><br>Bruma emite NF ao cliente. Pedido é enviado ao WMS do Adriano. CRM registra o número da NF e o status “enviado ao 3PL”.</div>
+<div class="flow"><strong>4. Execução física</strong><br>3PL separa, embala e entrega. CRM recebe atualizações de status.</div>
+<div class="flow"><strong>5. Pós-entrega</strong><br>Agente de follow-up usa os dados do CRM para enviar confirmação e perguntar se precisa de mais. Resposta é registrada no histórico do cliente.</div>
+<h2>Integração com agentes autônomos</h2>
+<p>Os agentes leem o CRM para saber quem comprou o quê, quando foi a última compra e qual o status do pedido. Eles escrevem no CRM quando registram uma reclamação, uma oportunidade de recompra ou um follow-up realizado. No piloto isso pode ser feito por planilha estruturada ou ferramenta simples. A lógica permanece a mesma quando migrar para um sistema mais robusto.</p>
+<h2>O que não é o CRM</h2>
+<p>Não é o sistema fiscal. Não é o WMS. Não substitui a decisão comercial de Armando. Ele centraliza a informação para que o comercial, o financeiro e os agentes trabalhem sobre os mesmos dados.</p>
 <p><a href="../">← Voltar à Bruma</a></p>
 </section>
 </main>
