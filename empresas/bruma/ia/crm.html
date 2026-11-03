@@ -5,23 +5,27 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CRM e Canais · Bruma</title>
 <link rel="stylesheet" href="../../../portal.css">
-<style>.section { background: white; border-radius: 16px; padding: 32px; margin-bottom: 24px; border: 1px solid #e5e7eb; }</style>
+<style>.section { background: white; border-radius: 16px; padding: 36px; margin-bottom: 28px; border: 1px solid #e5e7eb; line-height: 1.75; } .section h2 { margin-top: 0; }</style>
 </head>
 <body>
 <header><a class="brand" href="../../../">go<span>fluxo</span> ↗</a></header>
 <main class="wrap">
 <nav class="crumb"><a href="../../../">GoFluxo</a> / <a href="../../">Empresas</a> / <a href="../">Bruma</a> / IA</nav>
 <section class="section">
-<h1>CRM e Canais</h1>
-<p>Sistema de relacionamento com clientes e integração de canais de venda (B2B representantes e B2C).</p>
-<h2>Como funciona na Bruma</h2>
+<h1>CRM e Canais na Bruma</h1>
+<p>O CRM da Bruma é o sistema onde ficam registrados os clientes B2B (representantes e contas diretas), os pedidos, o histórico de compras e o status de cada entrega. Ele não substitui o WMS do 3PL. Ele é a camada comercial da Bruma.</p>
+<h2>O que o CRM precisa fazer</h2>
 <ul>
-<li>Cadastro de clientes B2B (ex: Real Móveis / Arão) com histórico de compras</li>
-<li>Pedidos que chegam via representantes ou site são registrados e enviados ao 3PL</li>
-<li>Visibilidade de status do pedido e estoque disponível por cliente</li>
-<li>Follow-up comercial automatizado após entrega</li>
+<li>Cadastro de clientes B2B com CNPJ, região, representante responsável e condições comerciais.</li>
+<li>Registro de pedidos (manual no piloto ou via integração com representantes).</li>
+<li>Visibilidade do saldo disponível no CD (via integração com o WMS ou atualização periódica).</li>
+<li>Acompanhamento do status do pedido (em separação, em trânsito, entregue).</li>
+<li>Histórico de compras por cliente para o comercial e para os agentes de follow-up.</li>
+<li>Registro de reclamações e oportunidades de recompra.</li>
 </ul>
-<p>Exemplo: o representante Anderson registra um pedido de 20 unidades. O CRM valida estoque no CD, gera a NF da Bruma e envia o pedido ao WMS do Adriano. O cliente acompanha o rastreamento.</p>
+<h2>Exemplo de fluxo no piloto</h2>
+<p>O representante Anderson registra um pedido de 20 unidades do produto X para a Real Móveis. O CRM valida se há saldo no CD. Se houver, gera a ordem para emissão da NF da Bruma e envia o pedido ao WMS do Adriano. O cliente (ou o representante) acompanha o status. Após a entrega, o agente de follow-up usa os dados do CRM para enviar a mensagem de confirmação e registrar a resposta.</p>
+<p>No início o CRM pode ser uma planilha estruturada ou uma ferramenta simples. O importante é que os dados estejam centralizados e que os agentes consigam ler e escrever neles. À medida que o volume cresce, a mesma lógica migra para um sistema mais robusto sem mudar as regras de negócio.</p>
 <p><a href="../">← Voltar à Bruma</a></p>
 </section>
 </main>
