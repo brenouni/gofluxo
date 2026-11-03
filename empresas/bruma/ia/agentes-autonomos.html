@@ -6,33 +6,66 @@
 <title>Agentes Autônomos de IA · Bruma</title>
 <link rel="stylesheet" href="../../../portal.css">
 <style>
-.section { background: white; border-radius: 16px; padding: 32px; margin-bottom: 24px; border: 1px solid #e5e7eb; }
-.example { background: #f0f9ff; border-left: 4px solid #0047FF; padding: 16px; margin: 16px 0; border-radius: 0 12px 12px 0; }
+.section { background: white; border-radius: 16px; padding: 36px; margin-bottom: 28px; border: 1px solid #e5e7eb; line-height: 1.7; }
+.section h2 { margin-top: 0; color: #0F1115; }
+.section h3 { color: #0047FF; margin-top: 28px; }
+.example { background: #f8fafc; border-left: 4px solid #0047FF; padding: 20px; margin: 20px 0; border-radius: 0 12px 12px 0; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.card { background: #f4f6f8; padding: 20px; border-radius: 12px; }
+@media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 <header><a class="brand" href="../../../">go<span>fluxo</span> ↗</a></header>
 <main class="wrap">
 <nav class="crumb"><a href="../../../">GoFluxo</a> / <a href="../../">Empresas</a> / <a href="../">Bruma</a> / IA</nav>
+
 <section class="section">
-<h1>Agentes Autônomos de IA</h1>
-<p>Agentes que operam de forma contínua sobre o segundo cérebro da Bruma. Conferem estoque, rastreiam pedidos, fazem follow-up com clientes e capturam conhecimento sem intervenção humana constante.</p>
-<h2>O que eles fazem na Bruma</h2>
+<h1>Agentes Autônomos de IA na Bruma</h1>
+<p>Na Bruma, agentes autônomos não são assistentes que esperam ser chamados. São operadores digitais que rodam de forma contínua sobre o segundo cérebro da empresa, executando rotinas de estoque, pedidos, relacionamento comercial e captura de conhecimento sem depender de alguém abrir um chat toda hora.</p>
+<p>Eles unificam o que antes se chamaria de bots Grok e futuros agentes no padrão Hermes em uma única camada: agentes que conhecem o modelo 3PL, as regras de exclusividade, o CD de Itajaí e os canais NECO.</p>
+
+<h2>O que um agente autônomo faz de verdade na operação</h2>
+<p>Um agente da Bruma tem acesso controlado ao segundo cérebro, às integrações com o WMS do 3PL e ao CRM. Ele não inventa dados. Ele lê o que está registrado e age dentro de regras claras.</p>
 <ul>
-<li>Conferir níveis de estoque no CD e alertar quando um SKU está abaixo do mínimo</li>
-<li>Rastrear pedidos em trânsito e notificar o comercial ou o cliente</li>
-<li>Fazer follow-up automático com clientes B2B após entrega</li>
-<li>Capturar reuniões e atualizar o segundo cérebro</li>
-<li>Monitorar exclusividade e alertar sobre possíveis paralelos</li>
-<li>Gerar relatórios diários de pedidos, estoque e margem</li>
+<li>Monitora níveis de estoque por SKU no CD e dispara alertas ou sugestões de reposição quando o saldo cruza limites definidos.</li>
+<li>Acompanha o status de pedidos do momento em que a Bruma emite a NF até a entrega final, e notifica comercial ou cliente quando há atraso ou exceção.</li>
+<li>Executa follow-up comercial após entrega: confirma recebimento, pergunta se precisa de mais unidades e registra a resposta.</li>
+<li>Captura reuniões e atualiza o segundo cérebro com decisões, pendências e próximos passos.</li>
+<li>Vigia sinais de exclusividade (pedidos fora da região combinada, tentativas de paralelo) e alerta os sócios.</li>
+<li>Gera resumos diários ou semanais de giro, margem por canal e acuracidade de estoque para o financeiro e o comercial.</li>
 </ul>
+
+<h2>Exemplos concretos no modelo da Bruma</h2>
 <div class="example">
-<strong>Exemplo real na Bruma:</strong> Um agente monitora o estoque do produto X no CD Itajaí. Quando o saldo cai abaixo de 50 unidades, ele avisa o Breno (FDE) e o Armando (comercial) e sugere a reposição com base no histórico de vendas do NECO.
+<strong>Reposição automática de estoque</strong><br>
+O agente monitora o produto “Carregador Portátil X” no CD Itajaí. O limite mínimo definido é 80 unidades. Quando o saldo chega a 75, ele consulta o histórico de vendas dos últimos 90 dias no NECO, calcula a projeção para os próximos 30 dias e envia uma mensagem estruturada para Breno (FDE) e Armando (comercial): “Saldo atual 75. Projeção de saída 120 unidades nos próximos 30 dias. Sugestão: repor 200 unidades. Fornecedor habitual: [nome]. Prazo médio de chegada: 12 dias.” A decisão de comprar continua humana. O agente só prepara o dado e o alerta no momento certo.
 </div>
 <div class="example">
-<strong>Follow-up:</strong> Após a entrega de um pedido ao cliente Real Móveis, o agente envia uma mensagem de confirmação e pergunta se precisa de mais alguma unidade, registrando a resposta no CRM.
+<strong>Follow-up pós-entrega em cliente B2B</strong><br>
+Um pedido de 40 unidades sai do CD para a Real Móveis (Arão). O agente acompanha o rastreamento. Quando o status muda para “entregue”, ele espera 24 horas e envia uma mensagem pelo canal combinado: “Confirmamos a entrega do pedido #BR-1042. Precisa de mais alguma unidade do mesmo item ou de outro SKU do catálogo?” Se o cliente responder “sim, mais 20”, o agente registra no CRM e avisa Armando para gerar o próximo pedido. Se não houver resposta em 48 horas, ele agenda um lembrete para o comercial.
 </div>
-<p>Unifica a capacidade de bots Grok e futuros agentes (incluindo padrões Hermes) sob uma única camada de agentes autônomos da Bruma.</p>
+<div class="example">
+<strong>Alerta de exclusividade</strong><br>
+O agente cruza pedidos recentes com a região combinada de exclusividade. Se um pedido for emitido para um CNPJ fora do NECO ou se houver sinal de revenda não autorizada, ele gera um alerta para os sócios com o número do pedido, o cliente e a região. Não bloqueia a venda sozinho — apenas sinaliza para decisão humana.
+</div>
+
+<h2>Como eles se conectam ao 3PL e ao segundo cérebro</h2>
+<div class="grid-2">
+<div class="card">
+<h3>Fonte de dados</h3>
+<p>WMS do parceiro (via API ou EDI), CRM da Bruma, segundo cérebro (reuniões, decisões, regras comerciais) e planilhas de giro quando ainda não houver integração completa.</p>
+</div>
+<div class="card">
+<h3>Regras de ação</h3>
+<p>Cada agente tem um escopo claro: o que pode ler, o que pode escrever e quando deve parar e pedir humano. Nenhuma ação financeira ou emissão de NF é feita sem aprovação.</p>
+</div>
+</div>
+<p>No piloto, a integração pode ser mais manual (planilha + mensagens). À medida que o volume cresce, o mesmo agente passa a ler diretamente do WMS e do CRM. A lógica de negócio permanece a mesma.</p>
+
+<h2>O que não é</h2>
+<p>Não é um chatbot genérico. Não é um agente que “sabe tudo” sem contexto. Não substitui o comercial na negociação nem o financeiro na decisão de compra. Ele reduz o trabalho de monitorar, lembrar e consolidar informação para que os sócios foquem em vender e decidir.</p>
+<p>A Bruma nasce preparada para essa camada. O segundo cérebro já está sendo construído para ser a memória que esses agentes vão ler e atualizar.</p>
 <p><a href="../">← Voltar à Bruma</a></p>
 </section>
 </main>
