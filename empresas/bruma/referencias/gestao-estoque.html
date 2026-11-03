@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gestão de Estoque 3PL · Bruma</title>
+<link rel="stylesheet" href="../../../portal.css">
+<style>
+.section { background: white; border-radius: 16px; padding: 36px; margin-bottom: 28px; border: 1px solid #e5e7eb; line-height: 1.75; }
+.section h2 { margin-top: 0; color: #0F1115; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+th, td { border: 1px solid #e5e7eb; padding: 10px; text-align: left; }
+th { background: #f8fafc; }
+</style>
+</head>
+<body>
+<header><a class="brand" href="../../../">go<span>fluxo</span> ↗</a></header>
+<main class="wrap">
+<nav class="crumb"><a href="../../../">GoFluxo</a> / <a href="../../">Empresas</a> / <a href="../">Bruma</a> / Referências</nav>
+<section class="section">
+<h1>Gestão de Estoque em um 3PL</h1>
+<p><em>Tradução e adaptação para a Bruma a partir do artigo da Atomix Logistics.</em></p>
+<p>Gestão de estoque em um 3PL é a forma como o operador recebe, armazena, conta, aloca e reporta o estoque que pertence à Bruma enquanto ele está no CD. O 3PL controla o lado físico: recebimento preciso, rastreamento por endereço, cycle counts regulares, controle de lote e validade quando aplicável, e tratamento de mercadoria avariada. A Bruma continua dona do lado comercial: previsão, pontos de reposição, dados de SKU e alocação por canal.</p>
+<h2>O que a gestão de estoque cobre</h2>
+<ol>
+<li><strong>Recebimento:</strong> Caixas e paletes são conferidos contra a nota ou ASN, contados e registrados. Sobras, faltas e avarias devem ser sinalizadas aqui.</li>
+<li><strong>Putaway e controle de endereço:</strong> Cada unidade é endereçada e escaneada.</li>
+<li><strong>Estados do estoque:</strong> O WMS separa on-hand, alocado, disponível e quarentena. Só o disponível aparece como vendável.</li>
+<li><strong>Contagem:</strong> Cycle counts verificam um subconjunto rotativo de endereços.</li>
+<li><strong>Relatório e sincronização:</strong> Quantidades disponíveis sincronizam com os sistemas da Bruma.</li>
+</ol>
+<h2>Quem é responsável pelo quê</h2>
+<table>
+<tr><th>Área</th><th>3PL (Adriano)</th><th>Bruma</th></tr>
+<tr><td>Acuracidade física</td><td>Contagem, escaneamento, cycle counts</td><td>ASN correto, etiquetas e SKUs corretos</td></tr>
+<tr><td>Disponibilidade</td><td>Mover para status vendável no prazo</td><td>Decidir canais e níveis de segurança</td></tr>
+<tr><td>Reposição</td><td>Reportar saldo com precisão</td><td>Previsão e pedidos de compra</td></tr>
+<tr><td>Avaria e perda</td><td>Registrar e segurar para análise</td><td>Decisão de disposição e seguro</td></tr>
+</table>
+<h2>Como medir acuracidade</h2>
+<p>“Somos 99% precisos” pode significar coisas diferentes. Peça a fórmula por escrito. A medida mais útil é a acuracidade unitária absoluta (soma de todas as divergências dividida pelas unidades contadas).</p>
+<h2>O que a Bruma deve conseguir ver</h2>
+<ul>
+<li>Saldo on-hand, alocado e vendável por SKU.</li>
+<li>Status de recebimentos.</li>
+<li>Unidades avariadas aguardando decisão.</li>
+<li>Log de ajustes manuais.</li>
+</ul>
+<h2>Perguntas para o parceiro</h2>
+<ol>
+<li>Qual o tempo médio de dock-to-stock e está no contrato?</li>
+<li>Como calculam acuracidade e posso ver os cycle counts?</li>
+<li>O que acontece quando a contagem está curta: quem investiga e quem paga?</li>
+<li>Existe allowance de shrinkage e qual a responsabilidade por perda?</li>
+</ol>
+<p>Na Bruma esses pontos devem ser negociados com o Adriano antes de escalar.</p>
+<p><a href="../">← Voltar à Bruma</a></p>
+</section>
+</main>
+</body>
+</html>
