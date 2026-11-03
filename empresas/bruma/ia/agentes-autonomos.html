@@ -3,16 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Agentes Autônomos de IA · Bruma</title>
+<title>Agentes Autônomos de IA · Bruma — 20 exemplos</title>
 <link rel="stylesheet" href="../../../portal.css">
 <style>
-.section { background: white; border-radius: 16px; padding: 36px; margin-bottom: 28px; border: 1px solid #e5e7eb; line-height: 1.7; }
-.section h2 { margin-top: 0; color: #0F1115; }
-.section h3 { color: #0047FF; margin-top: 28px; }
-.example { background: #f8fafc; border-left: 4px solid #0047FF; padding: 20px; margin: 20px 0; border-radius: 0 12px 12px 0; }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.card { background: #f4f6f8; padding: 20px; border-radius: 12px; }
-@media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
+.section { background: white; border-radius: 16px; padding: 36px; margin-bottom: 28px; border: 1px solid #e5e7eb; line-height: 1.75; }
+.section h2 { margin-top: 0; color: #0F1115; border-bottom: 2px solid #0047FF; padding-bottom: 8px; }
+.example { background: #f8fafc; border-left: 4px solid #0047FF; padding: 18px 20px; margin: 16px 0; border-radius: 0 12px 12px 0; }
+.example strong { display: block; margin-bottom: 6px; }
 </style>
 </head>
 <body>
@@ -22,50 +19,60 @@
 
 <section class="section">
 <h1>Agentes Autônomos de IA na Bruma</h1>
-<p>Na Bruma, agentes autônomos não são assistentes que esperam ser chamados. São operadores digitais que rodam de forma contínua sobre o segundo cérebro da empresa, executando rotinas de estoque, pedidos, relacionamento comercial e captura de conhecimento sem depender de alguém abrir um chat toda hora.</p>
-<p>Eles unificam o que antes se chamaria de bots Grok e futuros agentes no padrão Hermes em uma única camada: agentes que conhecem o modelo 3PL, as regras de exclusividade, o CD de Itajaí e os canais NECO.</p>
+<p>Na Bruma, agentes autônomos são operadores digitais que rodam de forma contínua sobre o segundo cérebro da empresa e sobre as integrações com o WMS do 3PL e o CRM. Eles não esperam ser chamados. Eles monitoram, alertam, consolidam e executam rotinas dentro de regras claras definidas pelos sócios.</p>
+<p>Eles unificam o que se chamaria de bots Grok e futuros agentes no padrão Hermes em uma única camada: agentes que conhecem o modelo 3PL, as regras de exclusividade, o CD de Itajaí, os canais NECO e as decisões já registradas no segundo cérebro.</p>
+<p>Nenhuma ação financeira (compra, emissão de NF, alteração de preço) é executada sem aprovação humana. O agente prepara o dado, sugere a ação e registra o resultado. A decisão permanece com Breno (FDE), Armando (comercial) ou Longuinho (financeiro), conforme o caso.</p>
+</section>
 
-<h2>O que um agente autônomo faz de verdade na operação</h2>
-<p>Um agente da Bruma tem acesso controlado ao segundo cérebro, às integrações com o WMS do 3PL e ao CRM. Ele não inventa dados. Ele lê o que está registrado e age dentro de regras claras.</p>
-<ul>
-<li>Monitora níveis de estoque por SKU no CD e dispara alertas ou sugestões de reposição quando o saldo cruza limites definidos.</li>
-<li>Acompanha o status de pedidos do momento em que a Bruma emite a NF até a entrega final, e notifica comercial ou cliente quando há atraso ou exceção.</li>
-<li>Executa follow-up comercial após entrega: confirma recebimento, pergunta se precisa de mais unidades e registra a resposta.</li>
-<li>Captura reuniões e atualiza o segundo cérebro com decisões, pendências e próximos passos.</li>
-<li>Vigia sinais de exclusividade (pedidos fora da região combinada, tentativas de paralelo) e alerta os sócios.</li>
-<li>Gera resumos diários ou semanais de giro, margem por canal e acuracidade de estoque para o financeiro e o comercial.</li>
-</ul>
+<section class="section">
+<h2>1. Estoque e reposição</h2>
+<p>Agentes que leem o saldo no WMS do parceiro, comparam com regras de mínimo e máximo definidas pela Bruma e geram alertas ou sugestões de reposição baseadas em histórico real de vendas no NECO.</p>
+<div class="example"><strong>Exemplo 1 — Alerta de saldo mínimo com projeção</strong>O agente monitora o SKU “Carregador Portátil 65W”. Limite mínimo: 80 unidades. Quando chega a 75, consulta vendas dos últimos 90 dias no NECO, calcula média diária e projeta 30 dias. Envia para Breno e Armando: “Saldo atual 75. Média 4,2/dia. Projeção 126 em 30 dias. Sugestão: repor 200. Fornecedor habitual: [nome]. Prazo: 12 dias.”</div>
+<div class="example"><strong>Exemplo 2 — Sugestão de reposição por região</strong>O agente separa o giro por estado do NECO. Identifica que o Maranhão consome 60% do estoque do produto Y enquanto o Ceará está parado. Sugere redistribuir ou priorizar reposição com base no histórico das 28 lojas da Real Móveis.</div>
+<div class="example"><strong>Exemplo 3 — Detecção de estoque parado</strong>SKU sem saída há 45 dias. O agente cruza com catálogo ativo e pedidos em aberto. Alerta Longuinho e Armando: “Produto Z sem movimentação há 45 dias. Saldo: 120. Custo de armazenagem acumulado: R$ XX. Opções: promoção, transferência ou descarte.”</div>
+<div class="example"><strong>Exemplo 4 — Conferência de acuracidade pós-inventário</strong>Após cycle count do 3PL, o agente compara saldo do WMS com saldo esperado pela Bruma. Se diferença > 2%, gera alerta com SKU, quantidade divergente e data do inventário para o financeiro e o FDE.</div>
+</section>
 
-<h2>Exemplos concretos no modelo da Bruma</h2>
-<div class="example">
-<strong>Reposição automática de estoque</strong><br>
-O agente monitora o produto “Carregador Portátil X” no CD Itajaí. O limite mínimo definido é 80 unidades. Quando o saldo chega a 75, ele consulta o histórico de vendas dos últimos 90 dias no NECO, calcula a projeção para os próximos 30 dias e envia uma mensagem estruturada para Breno (FDE) e Armando (comercial): “Saldo atual 75. Projeção de saída 120 unidades nos próximos 30 dias. Sugestão: repor 200 unidades. Fornecedor habitual: [nome]. Prazo médio de chegada: 12 dias.” A decisão de comprar continua humana. O agente só prepara o dado e o alerta no momento certo.
-</div>
-<div class="example">
-<strong>Follow-up pós-entrega em cliente B2B</strong><br>
-Um pedido de 40 unidades sai do CD para a Real Móveis (Arão). O agente acompanha o rastreamento. Quando o status muda para “entregue”, ele espera 24 horas e envia uma mensagem pelo canal combinado: “Confirmamos a entrega do pedido #BR-1042. Precisa de mais alguma unidade do mesmo item ou de outro SKU do catálogo?” Se o cliente responder “sim, mais 20”, o agente registra no CRM e avisa Armando para gerar o próximo pedido. Se não houver resposta em 48 horas, ele agenda um lembrete para o comercial.
-</div>
-<div class="example">
-<strong>Alerta de exclusividade</strong><br>
-O agente cruza pedidos recentes com a região combinada de exclusividade. Se um pedido for emitido para um CNPJ fora do NECO ou se houver sinal de revenda não autorizada, ele gera um alerta para os sócios com o número do pedido, o cliente e a região. Não bloqueia a venda sozinho — apenas sinaliza para decisão humana.
-</div>
+<section class="section">
+<h2>2. Pedidos e rastreamento</h2>
+<p>Agentes que acompanham o pedido desde a emissão da NF pela Bruma até a entrega final e detectam atrasos.</p>
+<div class="example"><strong>Exemplo 5 — Acompanhamento de pedido em trânsito</strong>Pedido #BR-1042 sai do CD para a Real Móveis. O agente consulta rastreamento a cada 4 horas. Se não avançar por mais de 48 horas, notifica Armando: “Pedido #BR-1042 sem atualização há 52 horas. Último status: em transferência. Sugestão: contatar transportadora ou informar o cliente.”</div>
+<div class="example"><strong>Exemplo 6 — Confirmação de entrega e abertura de follow-up</strong>Quando o status muda para “entregue”, o agente espera 24 horas e dispara a mensagem de follow-up comercial. Registra no segundo cérebro a data real de entrega versus o prazo prometido.</div>
+<div class="example"><strong>Exemplo 7 — Detecção de pedido sem NF ou sem envio ao 3PL</strong>Pedido registrado no CRM mas não aparece no WMS após 2 horas. O agente alerta o comercial: “Pedido #BR-1051 registrado às 14h, ainda não recebido pelo 3PL. Verificar se a NF foi emitida e se o arquivo foi enviado.”</div>
+<div class="example"><strong>Exemplo 8 — Resumo diário de pedidos em aberto</strong>Todo dia às 8h o agente envia para Armando e Breno: pedidos em separação, em trânsito, entregues ontem e atrasados, com volume e valor aproximado.</div>
+</section>
 
-<h2>Como eles se conectam ao 3PL e ao segundo cérebro</h2>
-<div class="grid-2">
-<div class="card">
-<h3>Fonte de dados</h3>
-<p>WMS do parceiro (via API ou EDI), CRM da Bruma, segundo cérebro (reuniões, decisões, regras comerciais) e planilhas de giro quando ainda não houver integração completa.</p>
-</div>
-<div class="card">
-<h3>Regras de ação</h3>
-<p>Cada agente tem um escopo claro: o que pode ler, o que pode escrever e quando deve parar e pedir humano. Nenhuma ação financeira ou emissão de NF é feita sem aprovação.</p>
-</div>
-</div>
-<p>No piloto, a integração pode ser mais manual (planilha + mensagens). À medida que o volume cresce, o mesmo agente passa a ler diretamente do WMS e do CRM. A lógica de negócio permanece a mesma.</p>
+<section class="section">
+<h2>3. Relacionamento comercial e follow-up</h2>
+<p>Agentes que executam contato pós-entrega, registram respostas e sinalizam oportunidades de recompra.</p>
+<div class="example"><strong>Exemplo 9 — Follow-up pós-entrega em cliente B2B</strong>Pedido de 40 unidades entregue à Real Móveis. Após 24 horas o agente envia: “Confirmamos a entrega do pedido #BR-1042. Precisa de mais alguma unidade do mesmo item ou de outro SKU?” Se responder “sim, mais 20”, registra no CRM e avisa Armando. Se não responder em 48 horas, agenda lembrete.</div>
+<div class="example"><strong>Exemplo 10 — Detecção de cliente inativo</strong>Cliente B2B sem pedido há 60 dias. O agente consulta histórico e catálogo. Envia para Armando: “Cliente [nome] sem pedido há 62 dias. Último: 15 unidades do produto X. Sugestão: oferta de reposição ou apresentação de novos itens.”</div>
+<div class="example"><strong>Exemplo 11 — Registro de reclamação e escalonamento</strong>Cliente responde dizendo que chegou produto avariado. O agente registra no CRM, anexa a mensagem e notifica Armando e o 3PL com o número do pedido. Não resolve sozinho — estrutura e encaminha.</div>
+<div class="example"><strong>Exemplo 12 — Sugestão de cross-sell baseada em histórico</strong>Cliente que compra regularmente o produto A nunca comprou o produto B (complementar). Após a terceira compra de A, o agente sugere a Armando incluir B na próxima abordagem.</div>
+</section>
 
-<h2>O que não é</h2>
-<p>Não é um chatbot genérico. Não é um agente que “sabe tudo” sem contexto. Não substitui o comercial na negociação nem o financeiro na decisão de compra. Ele reduz o trabalho de monitorar, lembrar e consolidar informação para que os sócios foquem em vender e decidir.</p>
-<p>A Bruma nasce preparada para essa camada. O segundo cérebro já está sendo construído para ser a memória que esses agentes vão ler e atualizar.</p>
+<section class="section">
+<h2>4. Exclusividade e risco comercial</h2>
+<p>Agentes que vigiam se as vendas estão dentro das regras de exclusividade regional e sinalizam possíveis paralelos.</p>
+<div class="example"><strong>Exemplo 13 — Alerta de venda fora da região de exclusividade</strong>O agente cruza CNPJ ou endereço de entrega com a região de exclusividade (NECO). Se um pedido for emitido para fora, gera alerta para os sócios com número do pedido, cliente e região. Não bloqueia a venda.</div>
+<div class="example"><strong>Exemplo 14 — Detecção de volume atípico em um cliente</strong>Cliente pequeno pede 5x a média histórica. O agente alerta: “Cliente [nome] pediu 250 unidades (média 45). Verificar se é compra legítima ou possível revenda não autorizada.”</div>
+<div class="example"><strong>Exemplo 15 — Monitoramento de preço de mercado</strong>Se houver fonte externa, o agente compara o preço da Bruma com o observado. Alerta se a diferença indicar possível paralelo ou guerra de preço na região.</div>
+<div class="example"><strong>Exemplo 16 — Registro de tentativa de paralelo reportada</strong>Representante informa que viu o produto em loja não autorizada. O agente registra no segundo cérebro, vincula ao SKU e à região, e notifica Breno e Armando.</div>
+</section>
+
+<section class="section">
+<h2>5. Financeiro, indicadores e conhecimento</h2>
+<p>Agentes que consolidam dados para o financeiro, geram indicadores e capturam conhecimento das reuniões.</p>
+<div class="example"><strong>Exemplo 17 — Resumo semanal de margem por canal</strong>Todo segunda-feira o agente consolida vendas, CMV e custo logístico estimado. Envia para Longuinho: “Semana X: receita R$ XX, CMV R$ YY, custo logístico R$ ZZ, margem bruta aproximada WW%.”</div>
+<div class="example"><strong>Exemplo 18 — Alerta de custo de armazenagem elevado</strong>Se o custo de armazenagem de um SKU ultrapassar um percentual da margem, o agente alerta o financeiro: “Produto W: custo de armazenagem nos últimos 30 dias = 18% da margem. Considerar redução de estoque ou renegociação.”</div>
+<div class="example"><strong>Exemplo 19 — Captura de reunião e atualização do segundo cérebro</strong>Após reunião dos sócios, o agente extrai decisões, pendências e responsáveis e atualiza o segundo cérebro. Exemplo: “Decisão: piloto com Real Móveis começa com 3 SKUs. Responsável: Armando. Prazo: 15 dias.”</div>
+<div class="example"><strong>Exemplo 20 — Indicador de acuracidade de estoque para o BI</strong>O agente calcula semanalmente a acuracidade (saldo WMS versus saldo esperado) e alimenta o dashboard. Se cair abaixo de 98%, gera alerta para Breno e Longuinho.</div>
+</section>
+
+<section class="section">
+<h2>Como os agentes se conectam ao 3PL e ao segundo cérebro</h2>
+<p>No piloto, a integração pode ser mais manual: planilhas exportadas do WMS, mensagens e atualizações no segundo cérebro. À medida que o volume cresce, o mesmo agente passa a ler diretamente via API ou EDI. A lógica de negócio permanece a mesma. O segundo cérebro é a memória: decisões, regras comerciais, histórico de reuniões e pendências. Os agentes consultam essa memória e a atualizam com novos eventos.</p>
+<p>A Bruma nasce preparada para essa camada. O segundo cérebro já está sendo construído para ser a fonte da verdade que esses agentes vão ler e escrever.</p>
 <p><a href="../">← Voltar à Bruma</a></p>
 </section>
 </main>
