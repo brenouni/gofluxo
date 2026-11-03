@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BI e Indicadores · Bruma</title>
+<link rel="stylesheet" href="../../../portal.css">
+<style>
+.section { background: white; border-radius: 16px; padding: 36px; margin-bottom: 28px; border: 1px solid #e5e7eb; line-height: 1.75; }
+.section h2 { margin-top: 0; }
+.dash { background: #0F1115; color: #e2e8f0; border-radius: 12px; padding: 24px; margin: 20px 0; font-family: monospace; font-size: 14px; }
+.dash .kpi { display: inline-block; background: #1a2332; padding: 12px 16px; margin: 8px; border-radius: 8px; min-width: 140px; }
+.dash .kpi strong { display: block; color: #0047FF; font-size: 20px; }
+</style>
+</head>
+<body>
+<header><a class="brand" href="../../../">go<span>fluxo</span> ↗</a></header>
+<main class="wrap">
+<nav class="crumb"><a href="../../../">GoFluxo</a> / <a href="../../">Empresas</a> / <a href="../">Bruma</a> / IA</nav>
+<section class="section">
+<h1>BI e Indicadores na Bruma</h1>
+<p>O BI da Bruma consolida os dados da operação (vendas, estoque, custo logístico e margem) para que os sócios vejam o que está acontecendo sem depender de planilhas manuais. Os agentes autônomos alimentam e leem esses indicadores.</p>
+<h2>Indicadores principais</h2>
+<ul>
+<li><strong>Acuracidade de estoque:</strong> saldo do WMS versus saldo esperado pela Bruma. Meta inicial: acima de 98%.</li>
+<li><strong>SLA de entrega:</strong> percentual de pedidos entregues no prazo combinado.</li>
+<li><strong>Margem por canal e região:</strong> receita menos CMV menos custo logístico estimado.</li>
+<li><strong>Giro de estoque:</strong> quantas vezes o estoque gira no período.</li>
+<li><strong>Custo de armazenagem por SKU:</strong> para identificar produtos que consomem margem.</li>
+</ul>
+<h2>Exemplo de tela de dashboard</h2>
+<div class="dash">
+<div class="kpi"><strong>98,4%</strong>Acuracidade estoque</div>
+<div class="kpi"><strong>92%</strong>Pedidos no prazo</div>
+<div class="kpi"><strong>R$ 48.200</strong>Receita semana</div>
+<div class="kpi"><strong>31%</strong>Margem bruta est.</div>
+<div class="kpi"><strong>4,1x</strong>Giro mensal</div>
+<p style="margin-top:16px; color:#94a3b8;">Atualizado automaticamente pelos agentes a partir do WMS, CRM e segundo cérebro.</p>
+</div>
+<p>No piloto o dashboard pode ser uma planilha atualizada pelos agentes ou uma ferramenta simples. O importante é que os números sejam os mesmos que os agentes usam para gerar alertas. À medida que a operação cresce, a mesma base alimenta visualizações mais ricas sem mudar a lógica de cálculo.</p>
+<p>O BI não substitui a decisão. Ele mostra o que aconteceu e o que está fora do padrão para que Breno, Armando e Longuinho decidam.</p>
+<p><a href="../">← Voltar à Bruma</a></p>
+</section>
+</main>
+</body>
+</html>
