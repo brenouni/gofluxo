@@ -7,33 +7,32 @@
 <link rel="stylesheet" href="../../portal.css">
 <style>
 :root { --accent: #0047FF; --green: #458252; --dark: #0F1115; --light: #F4F6F8; }
-.hero-bruma { background: linear-gradient(135deg, #0F1115 0%, #1a2332 100%); color: white; border-radius: 24px; padding: 60px 50px; margin-bottom: 40px; position: relative; overflow: hidden; }
-.hero-bruma h1 { font-size: clamp(36px, 5vw, 64px); margin: 0 0 12px; letter-spacing: -2px; }
-.hero-bruma .sub { font-size: 20px; opacity: 0.85; max-width: 700px; }
+.hero-bruma { background: linear-gradient(135deg, #0F1115 0%, #1a2332 100%); color: white; border-radius: 24px; padding: 0; margin-bottom: 40px; overflow: hidden; position: relative; min-height: 420px; display: grid; grid-template-columns: 1.2fr 1fr; }
+.hero-content { padding: 60px 50px; }
+.hero-bruma h1 { font-size: clamp(36px, 5vw, 60px); margin: 0 0 12px; letter-spacing: -2px; }
+.hero-bruma .sub { font-size: 18px; opacity: 0.9; max-width: 520px; line-height: 1.5; }
 .badge { display: inline-block; background: var(--accent); color: white; padding: 6px 14px; border-radius: 30px; font-size: 12px; font-weight: 700; letter-spacing: 1px; margin-bottom: 16px; }
-.section { background: white; border-radius: 20px; padding: 36px; margin-bottom: 28px; border: 1px solid #e5e7eb; }
+.hero-img { background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800') center/cover; min-height: 420px; }
+.section { background: white; border-radius: 20px; padding: 40px; margin-bottom: 28px; border: 1px solid #e5e7eb; }
 .section h2 { margin-top: 0; color: var(--dark); font-size: 28px; letter-spacing: -0.5px; }
-.flow { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; margin: 30px 0; }
-.flow-step { background: var(--light); border: 2px solid var(--accent); border-radius: 14px; padding: 18px 16px; text-align: center; min-width: 140px; max-width: 180px; animation: fadeInUp 0.6s ease forwards; opacity: 0; }
-.flow-step:nth-child(1) { animation-delay: 0.1s; }
-.flow-step:nth-child(3) { animation-delay: 0.2s; }
-.flow-step:nth-child(5) { animation-delay: 0.3s; }
-.flow-step:nth-child(7) { animation-delay: 0.4s; }
-.flow-step:nth-child(9) { animation-delay: 0.5s; }
-.flow-step strong { display: block; color: var(--accent); font-size: 14px; margin-bottom: 6px; }
-.arrow { font-size: 28px; color: var(--accent); animation: pulse 2s infinite; }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.flow-visual { display: flex; flex-wrap: wrap; gap: 8px; align-items: stretch; justify-content: center; margin: 30px 0; }
+.flow-card { background: linear-gradient(180deg, #fff 0%, var(--light) 100%); border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px 16px; text-align: center; flex: 1; min-width: 150px; max-width: 180px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); transition: transform 0.2s; }
+.flow-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.flow-card .num { width: 32px; height: 32px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-weight: 700; }
+.flow-card strong { display: block; font-size: 14px; margin-bottom: 6px; }
+.flow-card span { font-size: 12px; color: #64748b; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
 .card-link { display: block; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px; text-decoration: none; transition: all 0.2s; }
 .card-link:hover { border-color: var(--accent); transform: translateY(-2px); }
-.card-link h3 { margin: 0 0 8px; font-size: 18px; }
-.card-link p { margin: 0; color: #64748b; font-size: 14px; }
-.partners { display: flex; gap: 16px; flex-wrap: wrap; }
-.partner { background: var(--light); border-radius: 12px; padding: 16px 20px; min-width: 180px; }
-.partner strong { color: var(--accent); }
-.ia-section { background: linear-gradient(135deg, #0047FF15, #45825215); border-left: 4px solid var(--accent); }
-@media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } .hero-bruma { padding: 32px 24px; } .flow { flex-direction: column; } .arrow { transform: rotate(90deg); } }
+.card-link h3 { margin: 0 0 8px; font-size: 16px; }
+.card-link p { margin: 0; color: #64748b; font-size: 13px; }
+.partners { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.partner { background: var(--light); border-radius: 14px; padding: 20px; border-left: 4px solid var(--accent); }
+.partner strong { color: var(--accent); display: block; margin-bottom: 4px; }
+.ia-section { background: linear-gradient(135deg, #0047FF10, #45825210); border-left: 4px solid var(--accent); }
+.photo-strip { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; margin: 20px 0; }
+.photo-strip img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; }
+@media (max-width: 800px) { .hero-bruma { grid-template-columns: 1fr; } .hero-img { min-height: 220px; } .photo-strip { grid-template-columns: 1fr; } .flow-visual { flex-direction: column; align-items: center; } }
 </style>
 </head>
 <body>
@@ -45,114 +44,105 @@
   <nav class="crumb"><a href="../../">GoFluxo</a> / <a href="../">Empresas</a> / Bruma</nav>
 
   <section class="hero-bruma">
-    <div class="badge">MODELO 3PL</div>
-    <h1>Bruma | Parceiro 3PL</h1>
-    <p class="sub">Empresa de importação e distribuição com estoque próprio operacionalizado por parceiro logístico. Asset-light, focada em NECO, preparada para ser 100% agentica.</p>
+    <div class="hero-content">
+      <div class="badge">MODELO 3PL</div>
+      <h1>Bruma | Parceiro 3PL</h1>
+      <p class="sub">Importação e distribuição com estoque próprio operacionalizado por parceiro logístico. Asset-light, foco NECO, nascida para ser 100% agentica.</p>
+    </div>
+    <div class="hero-img"></div>
   </section>
 
   <section class="section">
     <h2>Quem somos</h2>
     <div class="partners">
-      <div class="partner"><strong>Breno Alencar</strong><br>Tecnologia, e-commerce, BI, rede regional (MA)</div>
-      <div class="partner"><strong>Armando</strong><br>Sócio — papel a detalhar</div>
-      <div class="partner"><strong>Longuinho</strong><br>Sócio — papel a detalhar</div>
-      <div class="partner"><strong>João Luis (Massali)</strong><br>Possível sócio futuro</div>
-      <div class="partner"><strong>Adriano</strong><br>Parceiro 3PL (não sócio)<br>CD Itajaí/SC</div>
+      <div class="partner"><strong>Breno Alencar</strong>FDE — Tecnologia, e-commerce, BI e rede regional (MA/Imperatriz/CDL)</div>
+      <div class="partner"><strong>Armando</strong>Administrativo Comercial</div>
+      <div class="partner"><strong>Longuinho</strong>Financeiro</div>
+      <div class="partner"><strong>João Luis (Massali)</strong>Sócio futuro — Tecnologia e Inovação</div>
+      <div class="partner"><strong>Adriano</strong>Parceiro 3PL (não sócio)<br>CD Itajaí/SC — operacionaliza o estoque da Bruma</div>
     </div>
-    <p style="margin-top:20px;">Foco: Norte, Nordeste e Centro-Oeste. Produtos licenciados, tecnologia portátil e facilitadores do dia a dia.</p>
+    <p style="margin-top:20px;">Foco prioritário: Norte, Nordeste e Centro-Oeste. Produtos licenciados/exclusivos, tecnologia portátil e facilitadores do dia a dia.</p>
   </section>
 
   <section class="section">
-    <h2>Como funciona o 3PL com estoque próprio</h2>
-    <p>A Bruma é dona do estoque e da relação comercial. O parceiro operacionaliza a parte física. Não é dropshipping.</p>
-    <div class="flow">
-      <div class="flow-step"><strong>1. Compra</strong>Bruma adquire pacote de estoque</div>
-      <div class="arrow">→</div>
-      <div class="flow-step"><strong>2. Recebimento</strong>Entra no CD Itajaí em nome da Bruma</div>
-      <div class="arrow">→</div>
-      <div class="flow-step"><strong>3. Venda</strong>Bruma vende B2B/B2C e emite NF</div>
-      <div class="arrow">→</div>
-      <div class="flow-step"><strong>4. Pick & Pack</strong>Parceiro separa e embala</div>
-      <div class="arrow">→</div>
-      <div class="flow-step"><strong>5. Entrega</strong>Logística do parceiro entrega ao cliente</div>
+    <h2>O modelo 3PL com estoque próprio</h2>
+    <p>A Bruma é dona do estoque e da relação comercial. O parceiro cuida da parte física (recebe, armazena, separa e envia). Não é dropshipping — a Bruma já comprou o produto.</p>
+    <div class="photo-strip">
+      <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=800" alt="CD moderno">
+      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400" alt="Armazém">
+      <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=400" alt="Logística">
     </div>
-    <p style="text-align:center; color:#64748b; font-size:14px;">Padrão de mercado 3PL: recebimento → armazenagem → sincronização de pedido → pick & pack → expedição. Visibilidade via API/EDI.</p>
+    <div class="flow-visual">
+      <div class="flow-card"><div class="num">1</div><strong>Compra</strong><span>Bruma adquire pacote de estoque</span></div>
+      <div class="flow-card"><div class="num">2</div><strong>Recebimento</strong><span>Entra no CD Itajaí em nome da Bruma</span></div>
+      <div class="flow-card"><div class="num">3</div><strong>Armazenagem</strong><span>Endereçado e visível no WMS</span></div>
+      <div class="flow-card"><div class="num">4</div><strong>Venda</strong><span>Bruma vende e emite NF ao cliente</span></div>
+      <div class="flow-card"><div class="num">5</div><strong>Pick & Pack</strong><span>Parceiro separa e embala</span></div>
+      <div class="flow-card"><div class="num">6</div><strong>Entrega</strong><span>Logística do parceiro entrega</span></div>
+    </div>
   </section>
 
   <section class="section">
-    <h2>Divisão de responsabilidades</h2>
-    <div class="grid-2">
-      <div>
-        <h3 style="color:var(--accent);">Parceiro 3PL (Adriano)</h3>
-        <ul>
-          <li>Recebimento e conferência</li>
-          <li>Armazenagem e putaway</li>
-          <li>Pick & pack</li>
-          <li>Expedição e transporte</li>
-          <li>Visibilidade de estoque (WMS)</li>
-        </ul>
-      </div>
-      <div>
-        <h3 style="color:var(--green);">Bruma</h3>
-        <ul>
-          <li>Propriedade do estoque</li>
-          <li>Relação comercial e preço</li>
-          <li>Emissão de NF ao cliente final</li>
-          <li>Previsão e reposição</li>
-          <li>Exclusividade e marca</li>
-        </ul>
-      </div>
+    <h2>Divisão de responsabilidades (padrão de mercado)</h2>
+    <div class="grid-3">
+      <div class="card-link"><h3>3PL (Adriano)</h3><p>Recebimento, conferência, putaway, cycle count, pick & pack, expedição, visibilidade WMS, cobrança por atividade.</p></div>
+      <div class="card-link"><h3>Bruma</h3><p>Propriedade do estoque, previsão, compra, preço, relação comercial, NF ao cliente final, exclusividade e marca.</p></div>
+      <div class="card-link"><h3>Integração</h3><p>API/EDI entre sistemas da Bruma e WMS do 3PL. Pedidos e estoque sincronizados em tempo real.</p></div>
     </div>
   </section>
 
   <section class="section">
     <h2>Plano de execução inicial</h2>
-    <ol style="line-height:1.8;">
+    <ol style="line-height:1.9; font-size:16px;">
       <li>Validar o modelo com os sócios</li>
-      <li>Definir piloto (ex: Arão / Real Móveis)</li>
-      <li>Negociar condições com o parceiro 3PL (preço, SLA, integração)</li>
-      <li>Montar catálogo e regras comerciais</li>
-      <li>Desenhar integração mínima (API/EDI)</li>
+      <li>Definir piloto (ex: Arão / Real Móveis — 28 lojas no MA)</li>
+      <li>Negociar condições com o parceiro 3PL (preço de armazenagem + manuseio, SLA, acuracidade, integração)</li>
+      <li>Montar catálogo inicial e regras comerciais (incluindo ângulo financeiro se validado)</li>
+      <li>Desenhar integração mínima (API/EDI ou processo controlado no piloto)</li>
       <li>Estruturar sociedade e abertura de empresa</li>
-      <li>Executar piloto fim a fim</li>
-      <li>Expandir</li>
+      <li>Executar piloto fim a fim e medir</li>
+      <li>Expandir com base no aprendizado</li>
     </ol>
   </section>
 
   <section class="section ia-section">
     <h2>IA, CRM e Agentização</h2>
-    <p>A Bruma nasce preparada para ser 100% agentica. O segundo cérebro (padrão Pixel) é a fonte da verdade.</p>
-    <div class="grid-2">
-      <div class="card-link"><h3>Bots Grok (futuro)</h3><p>Captura de reuniões, monitor de exclusividade, assistente comercial, orquestrador.</p></div>
-      <div class="card-link"><h3>CRM e canais</h3><p>Integração com representantes, B2B e B2C. Visibilidade de pedidos e estoque.</p></div>
-      <div class="card-link"><h3>API / EDI</h3><p>Sincronização com o WMS do 3PL e sistemas da Bruma.</p></div>
-      <div class="card-link"><h3>Segundo Cérebro</h3><p>Contexto vivo para agentes. Decisões, processos e conhecimento centralizados.</p></div>
+    <p>A Bruma nasce preparada para ser 100% agentica. O segundo cérebro (padrão Pixel Company Brain) é a fonte da verdade para futuros agentes.</p>
+    <div class="grid-3">
+      <div class="card-link"><h3>Bots Grok (futuro)</h3><p>Captura de reuniões, monitor de exclusividade, assistente comercial, orquestrador de fluxos.</p></div>
+      <div class="card-link"><h3>CRM e canais</h3><p>Representantes, B2B e B2C. Visibilidade de pedidos, estoque e relacionamento.</p></div>
+      <div class="card-link"><h3>API / EDI</h3><p>Sincronização com WMS do 3PL e sistemas da Bruma.</p></div>
+      <div class="card-link"><h3>Segundo Cérebro</h3><p>Contexto vivo: decisões, processos, reuniões e conhecimento centralizados.</p></div>
+      <div class="card-link"><h3>BI e indicadores</h3><p>Acuracidade de estoque, SLA de entrega, margem por canal e região.</p></div>
+      <div class="card-link"><h3>Sem Hermes</h3><p>No momento. Bots Grok quando a sociedade aprovar.</p></div>
     </div>
-    <p style="margin-top:16px; font-size:14px; color:#475569;">Sem Hermes no momento. Bots Grok quando aprovado pela sociedade.</p>
   </section>
 
   <section class="section">
     <h2>Referências e materiais úteis</h2>
-    <div class="grid-2">
+    <div class="grid-3">
       <a class="card-link" href="https://www.shopify.com/enterprise/blog/third-party-logistics-3pl" target="_blank"><h3>O que é 3PL — Shopify</h3><p>Guia completo de como funciona third-party logistics.</p></a>
       <a class="card-link" href="https://www.fulfill.com/what-is-3pl" target="_blank"><h3>What is a 3PL? — Fulfill.com</h3><p>Definição, fluxo e diferenças vs dropshipping.</p></a>
       <a class="card-link" href="https://nivek.com.br/post/o-que-e-3pl-operador-logistico-1pl-2pl-4pl" target="_blank"><h3>3PL no Brasil — Nivek</h3><p>Operador logístico e modelos 1PL a 4PL.</p></a>
       <a class="card-link" href="https://www.atomixlogistics.com/blog/3pl-inventory-management" target="_blank"><h3>Gestão de estoque 3PL</h3><p>O que o 3PL deve rastrear e garantir.</p></a>
+      <a class="card-link" href="https://www.atomixlogistics.com/blog/3pl-pricing-guide" target="_blank"><h3>Precificação 3PL</h3><p>Modelos de cobrança: armazenagem + atividade.</p></a>
+      <a class="card-link" href="https://www.fulfill.com/blog-posts/3pl-contract-guide" target="_blank"><h3>Contrato 3PL</h3><p>Cláusulas essenciais de SLA, responsabilidade e faturamento.</p></a>
     </div>
   </section>
 
   <section class="section">
     <h2>Pontos a validar</h2>
-    <ul>
-      <li>Contrato formal com o 3PL (SLA, acuracidade, responsabilidade por perda, preços)</li>
-      <li>Integração tecnológica real (API/EDI)</li>
-      <li>Desenho fiscal das NFs</li>
-      <li>Ângulo financeiro (spread como juros) — necessita especialista</li>
+    <ul style="line-height:1.8;">
+      <li>Contrato formal com o 3PL (SLA, acuracidade, responsabilidade por perda, preços de armazenagem e manuseio)</li>
+      <li>Integração tecnológica real (API/EDI e visibilidade de estoque)</li>
+      <li>Desenho fiscal das NFs (venda Bruma → cliente; documento 3PL → Bruma)</li>
+      <li>Ângulo financeiro (estruturar spread como juros) — necessita especialista tributário</li>
       <li>Exclusividade e rastreamento anti-paralelismo na prática</li>
+      <li>Dependência de parceiro único no início</li>
     </ul>
   </section>
 
-  <p class="note" style="margin-top:40px;">Documento vivo. Atualizado com base na reunião de 02/11/2026 e pesquisa de modelos 3PL reais. Dados operacionais sensíveis não constam neste portal público.</p>
+  <p class="note" style="margin-top:40px;">Documento vivo. Baseado na reunião de 02/11/2026 e pesquisa de modelos 3PL reais. Dados operacionais sensíveis não constam neste portal público.</p>
 </main>
 <footer>
   <span>GoFluxo · Bruma | Parceiro 3PL</span>
